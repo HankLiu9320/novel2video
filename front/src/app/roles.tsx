@@ -44,6 +44,34 @@ export default function RolesExtractor() {
         }))
     }
 
+    const fanyi = async (roleName:string, desc: string) => {
+        console.log(desc)
+        try {
+            const response = await fetch('http://localhost:1198/api/prompt/translate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({"content":desc}),
+            })
+
+            const translateRes = await response.json()
+
+            const newRole = roles[roleName]
+            newRole["prompts"] = translateRes["en"]
+
+            setRoles(prev => ({
+                ...prev,
+                [roleName]: newRole
+            }))
+
+            showToast("成功");
+        } catch (error) {
+            showToast("失败");
+            console.error('Failed to generate random description:', error)
+        }
+    }
+
     const generateRandomDescription = async (roleName: string) => {
         try {
             const response = await fetch('http://localhost:1198/api/novel/characters/random')
@@ -169,7 +197,21 @@ export default function RolesExtractor() {
                             color: '#000000',
                             fontSize: '14px',
                         }}
-                    /></td>
+                    /><button onClick={() => fanyi(name, roleInfo["desc"])}
+                      style={{
+                          padding: '5px 10px',
+                          fontSize: '14px',
+                          backgroundColor: '#1a1a1a',
+                          color: 'white',
+                          border: 'none',
+                          borderRadius: '5px',
+                          cursor: 'pointer',
+                          transition: 'background-color 0.3s'
+                      }}
+                    >
+                      翻译
+                    </button>
+                    </td>
                     <td><textarea
                         value={roleInfo["prompts"]}
                         onChange={(e) => handleRoleChange(name, e.target.value, "prompts")}

@@ -34,6 +34,12 @@ def translate_prompts(lines):
     return translated_lines
 
 
+def translate_text():
+    req = request.get_json()
+    res = llm_translate(req["content"])
+    return jsonify({"en": res}), 200
+
+
 def extract_scene_from_texts():
     try:
         lines, err = read_lines_from_directory(novel_fragments_dir)

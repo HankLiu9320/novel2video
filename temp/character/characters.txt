@@ -1,15 +1,17 @@
 {
     "柳无邪": {
         "desc": "20岁，男孩，黑色长发，凌乱不堪，身穿破损的青色长袍，身材瘦削，面容憔悴，眼神中透露出一丝不屈和迷茫",
-        "name": "柳无邪"
+        "name": "柳无邪",
+        "prompts": "20 years old, male, with black, disheveled long hair, wearing a torn green robe, emaciated, haggard, eyes showing a hint of defiance and confusion."
     },
     "徐义林": {
         "desc": "45岁11，男性，灰色短发，身穿深蓝色锦缎长袍，腰间系着玉带，面容严肃，眼神中带着一丝忧虑和期待",
         "name": "徐义林",
-        "prompts": "asdf"
+        "prompts": "45, male, with short gray hair, wearing a deep blue silk robe, with an jade belt around his waist, his face serious with a hint of worry and expectation in his eyes."
     },
     "徐家大小姐": {
         "desc": "18岁，女孩，黑色长发，梳成精致的发髻，身穿红色嫁衣，面容清秀，眼神中带着愤怒和失望",
-        "name": "徐家大小姐"
+        "name": "徐家大小姐",
+        "prompts": "\n18 years old, girl, black long hair, styled into an exquisite bun, wearing a red wedding dress, with a fair face, eyes filled with anger and disappointment"
     }
 }
