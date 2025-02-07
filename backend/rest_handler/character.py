@@ -6,7 +6,8 @@ import shutil
 from flask import Flask, request, jsonify
 
 from backend.llm.llm import query_llm
-from backend.util.constant import character_dir, prompts_dir, novel_fragments_dir
+from backend.util.constant import character_dir, prompts_dir, novel_fragments_dir, role_prompt_path
+from backend.util.file import read_file
 
 extract_character_sys = """
 	#Task: #
@@ -22,7 +23,7 @@ extract_character_sys = """
 	#Output Format:#
 	名字1/名字2/名字3/...
 """
-extract_character_sys = os.getcwd()
+extract_character_sys = read_file(role_prompt_path)
 
 def get_new_characters():
     try:
@@ -45,11 +46,14 @@ def get_new_characters():
             response = query_llm(prompt, extract_character_sys, 0.01, 8192)
             for character in response.split('/'):
                 split = character.split(":")
-                character_map[split[0].strip()] = split[1].strip()
+                desc_map = {}
+                desc_map["name"] = split[0].strip();
+                desc_map["desc"] = split[1].strip();
+                character_map[split[0].strip()] = desc_map
 
         # Save characters to a file
         with open(os.path.join(character_dir, 'characters.txt'), 'w') as file:
-            json.dump(character_map, file)
+            json.dump(character_map, file, ensure_ascii=False, indent=4)
 
         return jsonify(character_map), 200
 
@@ -82,7 +86,7 @@ def put_characters():
         character_map.update(descriptions)
         # Save descriptions to a file
         with open(os.path.join(character_dir, 'characters.txt'), 'w', encoding='utf-8') as file:
-            json.dump(character_map, file)
+            json.dump(character_map, file, ensure_ascii=False, indent=4)
 
         return jsonify({"message": "Descriptions updated successfully"}), 200
 

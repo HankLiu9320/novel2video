@@ -5,6 +5,7 @@ import AIImageGenerator from "./image";
 import TextEditor from "@/app/text";
 import PromptsEditor from "@/app/prompts";
 import CharacterExtractor from "@/app/character";
+import RolesExtractor from "@/app/roles";
 import VideoGenerator from "./video";
 import Models from "@/app/init";
 
@@ -26,6 +27,9 @@ export default function Home() {
                 <div style={styles.item} onClick={() => setActiveTab("character")}>
                     提取角色
                 </div>
+                <div style={styles.item} onClick={() => setActiveTab("roles")}>
+                    角色提取
+                </div>
                 <div style={styles.item} onClick={() => setActiveTab("image")}>
                     提取图像
                 </div>
@@ -37,6 +41,7 @@ export default function Home() {
                 {activeTab === "text" && <TextEditor/>}
                 {activeTab === "prompts" && <PromptsEditor/>}
                 {activeTab === "character" && <CharacterExtractor/>}
+                {activeTab === "roles" && <RolesExtractor/>}
                 {activeTab === "image" && <AIImageGenerator/>}
                 {activeTab === "video" && <VideoGenerator/>}
                 {activeTab === "models" && <Models/>}

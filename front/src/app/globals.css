@@ -25,3 +25,16 @@ body {
     text-wrap: balance;
   }
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+.fixed-width {
+    width: 100px;
+}
