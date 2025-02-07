@@ -11,6 +11,7 @@ from backend.util.file import read_lines_from_directory, save_list_to_files, rea
 
 fragmentsLen = 30
 
+
 # Function to generate input prompts
 def generate_input_prompts(lines, step):
     prompts = []
@@ -21,6 +22,7 @@ def generate_input_prompts(lines, step):
         prompts.append(prompt)
     return prompts
 
+
 # Function to translate prompts
 def translate_prompts(lines):
     def translate_line(line):
@@ -30,6 +32,7 @@ def translate_prompts(lines):
     with concurrent.futures.ThreadPoolExecutor() as executor:
         translated_lines = list(executor.map(translate_line, lines))
     return translated_lines
+
 
 def extract_scene_from_texts():
     try:
@@ -50,7 +53,7 @@ def extract_scene_from_texts():
     offset = 0
     sys = read_file(prompt_path)
     for p in prompts_mid:
-        res = query_llm(p, sys, "x", 1, 8192)
+        res = query_llm(p, sys, 1, 8192)
         logging.info(res)
         lines = res.split("\n")
         re_pattern = re.compile(r'^\d+\.\s*')
@@ -62,15 +65,13 @@ def extract_scene_from_texts():
         except Exception as e:
             return jsonify({"error": "save list to file failed"}), 500
 
-    
     lines, err = read_lines_from_directory(prompts_dir)
     if err:
         return jsonify({"error": "Failed to read fragments"}), 500
-    
-       
 
     logging.info("extract prompts from novel fragments finished")
     return jsonify(lines), 200
+
 
 def get_prompts_en():
     try:
@@ -80,7 +81,6 @@ def get_prompts_en():
     except Exception as e:
         return jsonify({"error": "Failed to manage directory"}), 500
 
-    
     lines, err = read_lines_from_directory(prompts_dir)
     if err:
         return jsonify({"error": "Failed to read fragments"}), 500
@@ -90,7 +90,7 @@ def get_prompts_en():
         p = os.path.join(character_dir, 'characters.txt')
         if os.path.exists(p):
             with open(p, 'r', encoding='utf8') as file:
-                    character_map = json.load(file)
+                character_map = json.load(file)
 
         for i, line in enumerate(lines):
             for key, value in character_map.items():
@@ -114,6 +114,7 @@ def get_prompts_en():
     logging.info("translate prompts to English finished")
     return jsonify(lines), 200
 
+
 def save_prompt_en():
     req = request.get_json()
     if not req or 'index' not in req or 'content' not in req:
@@ -128,6 +129,7 @@ def save_prompt_en():
         return jsonify({"error": "Failed to write file"}), 500
 
     return jsonify({"message": "Attachment saved successfully"}), 200
+
 
 def save_prompt_zh():
     req = request.get_json()

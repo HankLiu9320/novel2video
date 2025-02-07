@@ -22,6 +22,7 @@ extract_character_sys = """
 	#Output Format:#
 	名字1/名字2/名字3/...
 """
+extract_character_sys = os.getcwd()
 
 def get_new_characters():
     try:
@@ -41,9 +42,10 @@ def get_new_characters():
         for i in range(0, len(lines), 500):
             end = min(i + 500, len(lines))
             prompt = ''.join(lines[i:end])
-            response = query_llm(prompt, extract_character_sys, "doubao", 0.01, 8192)
+            response = query_llm(prompt, extract_character_sys, 0.01, 8192)
             for character in response.split('/'):
-                character_map[character.strip()] = character.strip()
+                split = character.split(":")
+                character_map[split[0].strip()] = split[1].strip()
 
         # Save characters to a file
         with open(os.path.join(character_dir, 'characters.txt'), 'w') as file:
@@ -59,13 +61,14 @@ def get_new_characters():
 def get_local_characters():
     try:
         if not os.path.exists(character_dir):
-            return jsonify({"error":"no local characters"}), 40401
+            return jsonify({"error": "no local characters"}), 40401
         with open(os.path.join(character_dir, 'characters.txt'), 'r', encoding='utf-8') as file:
             character_map = json.load(file)
         return jsonify(character_map), 200
     except Exception as e:
         logging.error(f"Failed to get local characters: {e}")
         return jsonify({"error": "Failed to get local characters"}), 500
+
 
 def put_characters():
     try:
@@ -87,6 +90,7 @@ def put_characters():
         logging.error(f"Failed to put characters: {e}")
         return jsonify({"error": "Failed to put characters"}), 500
 
+
 appearance_prompt = """
     随机生成动漫角色的外形描述，输出简练，以一组描述词的形式输出，每个描述用逗号隔开
     数量：一个
@@ -100,10 +104,11 @@ appearance_prompt = """
     使用英文输出，不要输出额外内容
 """
 
+
 def get_random_appearance():
     try:
         prompt = appearance_prompt
-        appearance = query_llm(prompt, "", "doubao", 1, 100)
+        appearance = query_llm(prompt, "", 1, 100)
         return jsonify(appearance), 200
     except Exception as e:
         logging.error(f"Failed to get random appearance: {e}")

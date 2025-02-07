@@ -5,7 +5,8 @@ from backend.util.file import get_config
 
 LLAMA_405B = "Meta-Llama-3.1-405B-Instruct"
 
-def query_samba_nova(input_text: str, sys: str, model_name: str, temperature: float) -> str:
+
+def query_samba_nova(input_text: str, sys: str, temperature: float) -> str:
     model = get_config()['model']
     try:
         url = "https://api.sambanova.ai/v1/chat/completions"

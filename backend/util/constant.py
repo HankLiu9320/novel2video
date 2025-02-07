@@ -11,5 +11,6 @@ prompts_en_dir = os.path.join(base_dir, "promptsEn")
 audio_dir = os.path.join(base_dir, "audio")
 video_dir = os.path.join(base_dir, "video")
 novel_path = "novel.txt"
+role_prompt_path = "role_prompt.txt"
 prompt_path = "prompt.txt"
 config_path = "config.json"

@@ -2,28 +2,33 @@
 
 import { useState, useEffect } from 'react'
 
-export default function TextEditor() {
-  const [novelContent, setNovelContent] = useState('')
+export default function PromptsEditor() {
+  const [rolePromptContent, setRolePromptContent] = useState('')
   const [promptContent, setPromptContent] = useState('')
   const [novelMessage, setNovelMessage] = useState('')
   const [promptMessage, setPromptMessage] = useState('')
 
   useEffect(() => {
-    loadContent('novel')
+    loadContent('role-prompt')
     loadContent('prompt')
   }, [])
 
-  const loadContent = async (type: 'novel' | 'prompt') => {
+  const loadContent = async (type: 'prompt' | 'role-prompt') => {
     try {
       const response = await fetch(`http://localhost:1198/api/${type}/load`)
       if (response.ok) {
         const data = await response.json()
         if (data.content) {
-          type === 'novel' ? setNovelContent(data.content) : setPromptContent(data.content)
           setMessage(type, '内容已加载')
         } else {
-          type === 'novel' ? setNovelContent('') : setPromptContent('')
+          type === 'prompt' ? setNovelContent('') : setPromptContent('')
           setMessage(type, '没有找到保存的内容')
+        }
+
+        if(type === 'role-prompt') {
+            setRolePromptContent(data.content)
+        } else if(type === 'prompt') {
+            setPromptContent(data.content)
         }
       } else {
         throw new Error('加载失败')
@@ -33,9 +38,9 @@ export default function TextEditor() {
     }
   }
 
-  const handleSave = async (type: 'novel' | 'prompt') => {
+  const handleSave = async (type: 'role-prompt' | 'prompt') => {
     try {
-      const content = type === 'novel' ? novelContent : promptContent
+      const content = type === 'role-prompt' ? rolePromptContent : promptContent
       const response = await fetch(`http://localhost:1198/api/${type}/save`, {
         method: 'POST',
         headers: {
@@ -60,29 +65,28 @@ export default function TextEditor() {
 
   return (
     <div className="max-w-full mx-auto my-10 px-4 py-6 bg-gray-100 rounded-lg shadow-lg">
-      <div className="mb-8 bg-gray-50 p-4 rounded-lg">
-        <h2 className="text-3xl font-bold text-center mb-4 text-black border-b-2 border-gray-300 pb-2">小说</h2>
+    <div className="bg-gray-200 p-4 rounded-lg">
+        <h2 className="text-3xl font-bold text-center mb-4 text-black border-b-2 border-gray-400 pb-2">角色提示词</h2>
         <textarea
-          value={novelContent}
-          onChange={(e) => setNovelContent(e.target.value)}
-          placeholder="在这里输入小说文本..."
-          className="w-full min-h-[400px] p-4 mb-4 border border-gray-400 rounded-md text-gray-800 bg-white resize-vertical focus:outline-none focus:ring-2 focus:ring-gray-500 text-lg"
+          value={rolePromptContent}
+          onChange={(e) => setRolePromptContent(e.target.value)}
+          placeholder="在这里输入提示词..."
+          className="w-full min-h-[400px] p-4 mb-4 border border-gray-400 rounded-md text-gray-800 bg-white resize-vertical focus:outline-none focus:ring-2 focus:ring-gray-600 text-lg"
         />
         <button
-          onClick={() => handleSave('novel')}
+          onClick={() => handleSave('role-prompt')}
           className="w-full py-3 bg-gray-900 text-white border-none rounded-md cursor-pointer text-lg hover:bg-gray-900 transition-colors"
         >
-          保存小说
+          保存提示词
         </button>
-        {novelMessage && (
-          <p className={`text-center mt-4 ${novelMessage.includes('成功') ? 'text-gray-800' : 'text-gray-600'}`}>
-            {novelMessage}
+        {promptMessage && (
+          <p className={`text-center mt-4 ${promptMessage.includes('成功') ? 'text-gray-800' : 'text-gray-600'}`}>
+            {promptMessage}
           </p>
         )}
       </div>
-
       <div className="bg-gray-200 p-4 rounded-lg">
-        <h2 className="text-3xl font-bold text-center mb-4 text-black border-b-2 border-gray-400 pb-2">提示词</h2>
+        <h2 className="text-3xl font-bold text-center mb-4 text-black border-b-2 border-gray-400 pb-2">画面提示词</h2>
         <textarea
           value={promptContent}
           onChange={(e) => setPromptContent(e.target.value)}

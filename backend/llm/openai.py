@@ -2,7 +2,7 @@
 from openai import OpenAI
 
 
-def query_openai(input_text: str, sys: str, model_name: str, temperature: float) -> str:
+def query_openai(input_text: str, sys: str, temperature: float) -> str:
     try:
         key = get_config()['apikey']
         url = get_config()['url']

@@ -6,7 +6,7 @@ import os
 import shutil
 
 from backend.util.constant import image_dir, novel_fragments_dir, novel_path, prompts_dir, prompts_en_dir, prompt_path, \
-    config_path
+    config_path, role_prompt_path
 from backend.util.file import read_files_from_directory, read_lines_from_directory, save_list_to_files, read_file, \
     read_lines_from_directory_utf8
 
@@ -146,6 +146,28 @@ def save_prompt():
         return jsonify({'message': '保存成功！'}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+def load_role_prompt():
+    try:
+        content = read_file(role_prompt_path)
+        return jsonify({'content': content}), 200
+    except FileNotFoundError:
+        return jsonify({'content': ''}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+def save_role_prompt():
+    try:
+        data = request.get_json()
+        content = data.get('content', '')
+
+        with open(role_prompt_path, 'w', encoding='utf-8') as file:
+            file.write(content)
+
+        return jsonify({'message': '保存成功！'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 
 def get_model_config():
     if not os.path.exists(config_path) or os.path.getsize(config_path) == 0:

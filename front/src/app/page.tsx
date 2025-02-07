@@ -3,6 +3,7 @@
 import { useState } from "react";
 import AIImageGenerator from "./image";
 import TextEditor from "@/app/text";
+import PromptsEditor from "@/app/prompts";
 import CharacterExtractor from "@/app/character";
 import VideoGenerator from "./video";
 import Models from "@/app/init";
@@ -15,6 +16,9 @@ export default function Home() {
             <div style={styles.sidebar}>
                 <div style={styles.item} onClick={() => setActiveTab("models")}>
                     初始化
+                </div>
+                <div style={styles.item} onClick={() => setActiveTab("prompts")}>
+                    Prompt设置
                 </div>
                 <div style={styles.item} onClick={() => setActiveTab("text")}>
                     保存文本
@@ -31,6 +35,7 @@ export default function Home() {
             </div>
             <div style={styles.content}>
                 {activeTab === "text" && <TextEditor/>}
+                {activeTab === "prompts" && <PromptsEditor/>}
                 {activeTab === "character" && <CharacterExtractor/>}
                 {activeTab === "image" && <AIImageGenerator/>}
                 {activeTab === "video" && <VideoGenerator/>}
