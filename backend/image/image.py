@@ -4,6 +4,7 @@ from backend.util.file import get_config
 width = 512
 height = 512
 
+
 async def generate_image(lines):
     try:
         type = get_config()['address3Type']
@@ -19,13 +20,14 @@ async def generate_image(lines):
         print(f"An error occurred: {e}")
         raise
 
-async def generate_images_single(content, i):
+
+async def generate_images_single(content, name, outdir):
     try:
         type = get_config()['address3Type']
         if type == 'stable_diffusion_web_ui':
-            await sd.generate_image(content, 114514191981, width, height, i)
+            await sd.generate_one_image(content, "", 114514191981, outdir, name)
         elif type == 'comfyui':
-            await comfyui.generate_single_image(content, i)
+            await comfyui.generate_single_image(content, name)
         else:
             raise ValueError(f"Unknown tool type: {type}")
     except Exception as e:

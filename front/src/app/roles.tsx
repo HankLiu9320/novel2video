@@ -1,8 +1,10 @@
 'use client'
 
 import React, {useEffect, useState} from 'react'
+import Image from "next/image";
 import {showToast} from "@/app/toast";
 import {ToastContainer} from "react-toastify";
+
 
 export default function RolesExtractor() {
     const [roles, setRoles] = useState<Record<string, object>>({})
@@ -12,6 +14,11 @@ export default function RolesExtractor() {
         showToast("提取本地角色");
         extractRoles(true);
     }, []);
+
+    const addCacheBuster = (url: string) => {
+        const cacheBuster = `?v=${Date.now()}`
+        return url.includes('?') ? `${url}&${cacheBuster}` : `${url}${cacheBuster}`
+    }
 
     const extractRoles = async (isLocal: boolean) => {
         setIsLoading(true)
@@ -69,6 +76,35 @@ export default function RolesExtractor() {
         } catch (error) {
             showToast("失败");
             console.error('Failed to generate random description:', error)
+        }
+    }
+
+    const generateSingleImage = async (roleName:string, prompts: string) => {
+        try {
+            showToast('开始');
+            const response = await fetch('http://localhost:1198/api/novel/image', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: roleName,
+                    content: prompts,
+                    outdir: 'role/'
+                }),
+            });
+            if (!response.ok) {
+                throw new Error('Failed to regenerate image');
+            }
+            const data = await response.json();
+            const imageUrl = data.url;
+            const url = addCacheBuster(`http://localhost:1198${imageUrl}`);
+            handleRoleChange(roleName, url, "imgUrl")
+            console.log(`successfully regenerate image for prompt ${name}.`);
+            showToast('成功');
+        } catch (error) {
+            console.error('Error saving attachment:', error);
+            showToast('失败');
         }
     }
 
@@ -226,7 +262,7 @@ export default function RolesExtractor() {
                         }}
                     />
                     <button
-                        onClick={() => generateRandomDescription(name)}
+                        onClick={() => generateSingleImage(name, roleInfo["prompts"])}
                         style={{
                             padding: '5px 10px',
                             fontSize: '14px',
@@ -241,7 +277,9 @@ export default function RolesExtractor() {
                         生成角色图
                     </button>
                     </td>
-                    <td>{name}</td>
+                    <td>
+                    {roleInfo["imgUrl"] ? (<img width="100" src={roleInfo["imgUrl"]}/> ) : ""}
+                    </td>
                 </tr>
             ))}
             </table>

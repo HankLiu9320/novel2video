@@ -222,5 +222,19 @@
                 "title": "Load LoRA"
             }
         }
+    },
+    "sdConfig": {
+        "negative_prompt": "ng_deepnegative_v1_75t,badhandv4 (worst quality:2),(low quality:2),(normal quality:2),lowres,bad anatomy,normal quality,((monochrome)),((grayscale)),(painting by bad-artist-anime:0.9), (painting by bad-artist:0.9), watermark, text, error, blurry, jpeg artifacts, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, artist name,deformed,distorted,disfigured,doll,poorly drawn,bad anatomy,wrong anatomy,bad hand,bad fingers,NSFW",
+        "batch_size": 1,
+        "cfg_scale": 7,
+        "height": 512,
+        "override_settings": {
+            "sd_model_checkpoint": "3Guofeng3_v34.safetensors [a83e25fe5b]",
+            "sd_vae": "Automatic"
+        },
+        "sampler_name": "DPM++ 2M",
+        "scheduler": "karras",
+        "steps": 20,
+        "width": 512
     }
 }

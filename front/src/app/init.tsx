@@ -12,13 +12,15 @@ export default function Component() {
   const [address3, setAddress3] = useState('')
   const [address3Type, setAddress3Type] = useState('stable_diffusion_web_ui')
   const [comfyuiNodeApi, setComfyuiNodeApi] = useState('')
+  const [sdConfig, setSDConfig] = useState('')
   const [savingStates, setSavingStates] = useState({
     url:false,
     apikey: false,
     model:false,
     address2: false,
     address3: false,
-    comfyuiNodeApi: false
+    comfyuiNodeApi: false,
+    sdConfig: false
   })
 
   useEffect(() => {
@@ -37,7 +39,8 @@ export default function Component() {
         setAddress2(data.address2 || '')
         setAddress3(data.address3 || '')
         setAddress3Type(data.address3Type || 'stable_diffusion_web_ui')
-        setComfyuiNodeApi(JSON.stringify(data.comfyuiNodeApi) || '')
+        setSDConfig(JSON.stringify(data.sdConfig, null, 2) || '{}')
+        setComfyuiNodeApi(JSON.stringify(data.comfyuiNodeApi, null, 2) || '')
       } else {
         showToast(`读取本地配置出错`)
         console.error('Failed to fetch addresses')
@@ -227,6 +230,29 @@ export default function Component() {
               {savingStates.address3 ? '保存中...' : '保存'}
             </button>
           </div>
+          {address3Type === 'stable_diffusion_web_ui' && (
+            <div className="mt-2">
+              <label htmlFor="comfyuiNodeApi" className="block text-sm font-medium text-gray-800">
+                Stable Diffusion设置
+              </label>
+              <div className="flex flex-col space-y-2">
+              <textarea
+                  id="sdConfig"
+                  value={sdConfig}
+                  onChange={(e) => setSDConfig(e.target.value)}
+                  placeholder="在此粘贴 sdConfig JSON..."
+                  className="w-full h-40 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500 font-mono whitespace-pre resize-none"
+              />
+              <button
+                  onClick={() => saveAddress('sdConfig', sdConfig)}
+                  disabled={savingStates.sdConfig}
+                  className="px-4 py-2 bg-black text-white rounded-md shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {savingStates.sdConfig ? '保存中...' : '保存'}
+              </button>
+              </div>
+            </div>
+          )}
           {address3Type === 'comfyui' && (
               <div className="mt-2">
                 <label htmlFor="comfyuiNodeApi" className="block text-sm font-medium text-gray-800">

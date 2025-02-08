@@ -9,6 +9,80 @@ from backend.util.constant import image_dir
 from backend.util.file import get_config
 
 
+async def generate_one_image(prompt: str, negative_prompt: str, seed: int, out_dir: str, img_name: str):
+    try:
+        url = get_config()['address3']
+        sdConfig = get_config()['sdConfig']
+
+        payload = {
+            "prompt": prompt,
+            "negative_prompt": negative_prompt or sdConfig['negative_prompt'] or "",
+            "sampler_name": sdConfig['sampler_name'],
+            "scheduler": sdConfig['scheduler'],
+            "cfg_scale": sdConfig['cfg_scale'],
+            "steps": sdConfig['steps'],
+            "width": sdConfig['width'],
+            "height": sdConfig['height'],
+            "override_settings": {
+                "sd_model_checkpoint": sdConfig['override_settings']["sd_model_checkpoint"],
+                "sd_vae": sdConfig['override_settings']["sd_vae"],
+            },
+            "seed": seed | -1,
+            "enable_hr": True,
+            "hr_scale": 2,
+            "denoising_strength": 0.7,
+            "hr_upscaler": "R-ESRGAN 4x+",
+            "hr_resize_x": 1024,
+            "hr_resize_y": 1024,
+            "hr_sampler_name": "Euler",
+            "hr_second_pass_steps": 15,
+        }
+    except Exception as e:
+        logging.error(e)
+        return
+
+    formatted_json = json.dumps(payload, indent=4)
+    logging.error(f"prompts:{formatted_json}")
+
+    try:
+        response = requests.post(f"{url}/sdapi/v1/txt2img", json=payload)
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        logging.error(f"Failed to make request: {e}")
+        return
+
+    try:
+        response_data = response.json()
+    except json.JSONDecodeError as e:
+        logging.error(f"Failed to decode JSON response: {e}")
+        return
+
+    images = response_data.get("images")
+    if not images:
+        logging.error("No images found in response")
+        return
+
+    try:
+        image_data = base64.b64decode(images[0])
+    except (IndexError, base64.binascii.Error) as e:
+        logging.error(f"Failed to decode image: {e}")
+        return
+
+    dir = os.path.join(image_dir, out_dir)
+    if not os.path.exists(dir):
+        os.makedirs(dir)
+    output_filename = os.path.join(dir, f"{img_name}.png")
+
+    try:
+        with open(output_filename, "wb") as image_file:
+            image_file.write(image_data)
+    except IOError as e:
+        logging.error(f"Failed to write image file: {e}")
+        return
+
+    logging.info(f"Image saved to {output_filename}")
+
+
 async def generate_image(prompt: str, seed: int, width: int, height: int, order):
     try:
         url = get_config()['address3']
@@ -22,10 +96,10 @@ async def generate_image(prompt: str, seed: int, width: int, height: int, order)
             "width": width,
             "height": height,
             # "override_settings": {
-                # "sd_model_checkpoint":"xl_Dream Anime XL _ 筑梦动漫XL_v4.0 - 余晖缱绻_Dream Anime XL _ 筑梦动漫XL_v4.0 - 余晖缱绻",
-                # "sd_vae": "None",
+            # "sd_model_checkpoint":"xl_Dream Anime XL _ 筑梦动漫XL_v4.0 - 余晖缱绻_Dream Anime XL _ 筑梦动漫XL_v4.0 - 余晖缱绻",
+            # "sd_vae": "None",
             # },
-            "seed":-1,
+            "seed": -1,
             "enable_hr": True,
             "hr_scale": 2,
             "denoising_strength": 0.7,
@@ -33,7 +107,7 @@ async def generate_image(prompt: str, seed: int, width: int, height: int, order)
             "hr_resize_x": 1024,
             "hr_resize_y": 1024,
             "hr_sampler_name": "Euler",
-            "hr_second_pass_steps":15,
+            "hr_second_pass_steps": 15,
         }
         # "scheduler": "Simple",
         # "forge_additional_modules": [

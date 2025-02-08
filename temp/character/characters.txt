@@ -7,11 +7,13 @@
     "徐义林": {
         "desc": "45岁11，男性，灰色短发，身穿深蓝色锦缎长袍，腰间系着玉带，面容严肃，眼神中带着一丝忧虑和期待",
         "name": "徐义林",
-        "prompts": "45, male, with short gray hair, wearing a deep blue silk robe, with an jade belt around his waist, his face serious with a hint of worry and expectation in his eyes."
+        "prompts": "45, male, with short gray hair, wearing a deep blue silk robe, with an jade belt around his waist, his face serious with a hint of worry and expectation in his eyes.",
+        "imgUrl": "http://localhost:1198/images/role/徐义林.png?v=1739009146910"
     },
     "徐家大小姐": {
         "desc": "18岁，女孩，黑色长发，梳成精致的发髻，身穿红色嫁衣，面容清秀，眼神中带着愤怒和失望",
         "name": "徐家大小姐",
-        "prompts": "\n18 years old, girl, black long hair, styled into an exquisite bun, wearing a red wedding dress, with a fair face, eyes filled with anger and disappointment"
+        "prompts": "\n18 years old, girl, black long hair, styled into an exquisite bun, wearing a red wedding dress, with a fair face, eyes filled with anger and disappointment",
+        "imgUrl": "http://localhost:1198/images/role/徐家大小姐.png?v=1739009146910"
     }
 }

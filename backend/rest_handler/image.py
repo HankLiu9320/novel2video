@@ -21,9 +21,9 @@ async def async_generate_images(lines):
         raise e
 
 
-async def async_generate_image_single(content, index):
+async def async_generate_image_single(content, name, outdir):
     try:
-        await generate_images_single(content, index,)
+        await generate_images_single(content, name, outdir)
     except Exception as e:
         logging.error(e)
         raise
@@ -63,10 +63,10 @@ def get_local_images():
 def generate_single_image():
     try:
         req = request.get_json()
-        if not req or 'index' not in req or 'content' not in req:
+        if not req or 'name' not in req or 'content' not in req:
             return jsonify({"error": "parse request body failed"}), 400
-        file = os.path.join("/images", str(req['index'])+'.png')
-        asyncio.run(async_generate_image_single(req['content'], req['index']))
+        file = os.path.join("/images", str(req['outdir']), str(req['name'])+'.png')
+        asyncio.run(async_generate_image_single(req['content'], req['name'], req['outdir']))
     except Exception as e:
         return handle_error("Failed to read fragments", e)
     return jsonify({"status": "Image generation started", "url":file}), 200
