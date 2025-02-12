@@ -24,9 +24,6 @@ export default function Home() {
                 <div style={styles.item} onClick={() => setActiveTab("text")}>
                     保存文本
                 </div>
-                <div style={styles.item} onClick={() => setActiveTab("character")}>
-                    提取角色
-                </div>
                 <div style={styles.item} onClick={() => setActiveTab("roles")}>
                     角色提取
                 </div>

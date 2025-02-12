@@ -25,7 +25,7 @@ async def generate_images_single(content, name, outdir):
     try:
         type = get_config()['address3Type']
         if type == 'stable_diffusion_web_ui':
-            await sd.generate_one_image(content, "", 114514191981, outdir, name)
+            await sd.generate_one_image(content, "", -1, outdir, name)
         elif type == 'comfyui':
             await comfyui.generate_single_image(content, name)
         else:

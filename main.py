@@ -9,6 +9,7 @@ from backend.rest_handler.init import get_initial, get_novel_fragments, load_nov
     save_prompt, load_prompt, get_model_config, save_model_config, load_role_prompt, save_role_prompt
 from backend.rest_handler.prompt import extract_scene_from_texts, get_prompts_en, save_prompt_en, save_prompt_zh, \
     translate_text
+from backend.rest_handler.storyboard import extract_storyboard_from_texts
 from backend.rest_handler.video import generate_video, get_video
 from backend.tts.tts import generate_audio_files
 from backend.util.constant import image_dir, video_dir
@@ -21,6 +22,11 @@ logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s - %(levelname)s - %(message)s [File: %(filename)s, Line: %(lineno)d]'
 )
+
+# novel
+@app.route('/api/save/novel/storyboard', methods=['POST']) # 分镜
+def api_save_novel_storyboard():
+    return extract_storyboard_from_texts()
 
 # novel
 @app.route('/api/get/novel/fragments', methods=['GET']) # 获取片段

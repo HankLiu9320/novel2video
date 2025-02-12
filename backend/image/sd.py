@@ -5,6 +5,8 @@ import os
 import requests
 import base64
 
+from aiohttp import payload_type
+
 from backend.util.constant import image_dir
 from backend.util.file import get_config
 
@@ -14,29 +16,34 @@ async def generate_one_image(prompt: str, negative_prompt: str, seed: int, out_d
         url = get_config()['address3']
         sdConfig = get_config()['sdConfig']
 
-        payload = {
-            "prompt": prompt,
-            "negative_prompt": negative_prompt or sdConfig['negative_prompt'] or "",
-            "sampler_name": sdConfig['sampler_name'],
-            "scheduler": sdConfig['scheduler'],
-            "cfg_scale": sdConfig['cfg_scale'],
-            "steps": sdConfig['steps'],
-            "width": sdConfig['width'],
-            "height": sdConfig['height'],
-            "override_settings": {
-                "sd_model_checkpoint": sdConfig['override_settings']["sd_model_checkpoint"],
-                "sd_vae": sdConfig['override_settings']["sd_vae"],
-            },
-            "seed": seed | -1,
-            "enable_hr": True,
-            "hr_scale": 2,
-            "denoising_strength": 0.7,
-            "hr_upscaler": "R-ESRGAN 4x+",
-            "hr_resize_x": 1024,
-            "hr_resize_y": 1024,
-            "hr_sampler_name": "Euler",
-            "hr_second_pass_steps": 15,
-        }
+        sdConfig["prompt"] = prompt
+        sdConfig["negative_prompt"] = negative_prompt or sdConfig['negative_prompt'] or ""
+        sdConfig["seed"] = seed | -1
+        payload = sdConfig
+
+        # payload = {
+        #     "prompt": prompt,
+        #     "negative_prompt": negative_prompt or sdConfig['negative_prompt'] or "",
+        #     "sampler_name": sdConfig['sampler_name'],
+        #     "scheduler": sdConfig['scheduler'],
+        #     "cfg_scale": sdConfig['cfg_scale'],
+        #     "steps": sdConfig['steps'],
+        #     "width": sdConfig['width'],
+        #     "height": sdConfig['height'],
+        #     "override_settings": {
+        #         "sd_model_checkpoint": sdConfig['override_settings']["sd_model_checkpoint"],
+        #         "sd_vae": sdConfig['override_settings']["sd_vae"],
+        #     },
+        #     "seed": seed | -1,
+        #     "enable_hr": True,
+        #     "hr_scale": 2,
+        #     "denoising_strength": 0.7,
+        #     "hr_upscaler": "R-ESRGAN 4x+",
+        #     "hr_resize_x": 1024,
+        #     "hr_resize_y": 1024,
+        #     "hr_sampler_name": "Euler",
+        #     "hr_second_pass_steps": 15,
+        # }
     except Exception as e:
         logging.error(e)
         return
