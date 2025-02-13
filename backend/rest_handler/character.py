@@ -1,12 +1,12 @@
-import os
 import json
 import logging
+import os
 import shutil
 
-from flask import Flask, request, jsonify
+from flask import request, jsonify
 
 from backend.llm.llm import query_llm
-from backend.util.constant import character_dir, prompts_dir, novel_fragments_dir, role_prompt_path
+from backend.util.constant import character_dir, role_prompt_path
 from backend.util.file import read_file
 
 extract_character_sys = """
@@ -34,9 +34,9 @@ def get_new_characters():
 
         # Read lines from the prompts directory
         lines = []
-        for file_name in os.listdir(novel_fragments_dir):
-            with open(os.path.join(novel_fragments_dir, file_name), 'r', encoding='utf-8') as file:
-                lines.extend(file.readlines())
+        # for file_name in os.listdir(novel_fragments_dir):
+        #     with open(os.path.join(novel_fragments_dir, file_name), 'r', encoding='utf-8') as file:
+        #         lines.extend(file.readlines())
 
         # Process lines in chunks
         character_map = {}

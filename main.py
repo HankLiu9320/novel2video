@@ -1,15 +1,17 @@
+import logging
 import os
+
 from flask import Flask, send_from_directory
 from flask_cors import CORS
-import logging
 
-from backend.rest_handler.character import get_local_characters, get_new_characters, get_random_appearance, put_characters
+from backend.rest_handler.character import get_local_characters, get_new_characters, get_random_appearance, \
+    put_characters
 from backend.rest_handler.image import generate_images, get_local_images, generate_single_image
-from backend.rest_handler.init import get_initial, get_novel_fragments, load_novel, save_combined_fragments, save_novel, \
+from backend.rest_handler.init import get_initial, load_novel, save_novel, \
     save_prompt, load_prompt, get_model_config, save_model_config, load_role_prompt, save_role_prompt
 from backend.rest_handler.prompt import extract_scene_from_texts, get_prompts_en, save_prompt_en, save_prompt_zh, \
     translate_text
-from backend.rest_handler.storyboard import extract_storyboard_from_texts
+from backend.rest_handler.storyboard import extract_storyboard_from_texts, update_storyboard
 from backend.rest_handler.video import generate_video, get_video
 from backend.tts.tts import generate_audio_files
 from backend.util.constant import image_dir, video_dir
@@ -24,18 +26,13 @@ logging.basicConfig(
 )
 
 # novel
-@app.route('/api/save/novel/storyboard', methods=['POST']) # 分镜
+@app.route('/api/save/novel/storyboard', methods=['GET']) # 分镜
 def api_save_novel_storyboard():
     return extract_storyboard_from_texts()
 
-# novel
-@app.route('/api/get/novel/fragments', methods=['GET']) # 获取片段
-def api_get_novel_fragments():
-    return get_novel_fragments()
-
-@app.route('/api/save/novel/fragments', methods=['POST']) # 切割片段
-def api_save_combined_fragments():
-    return save_combined_fragments()
+@app.route('/api/update/novel/storyboard', methods=['POST']) # 修改分镜
+def api_update_novel_storyboard():
+    return update_storyboard()
 
 # prompts
 @app.route('/api/get/novel/prompts', methods=['GET']) # 提取场景

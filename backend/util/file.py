@@ -132,6 +132,14 @@ def save_list_to_files(input_list, path, offset):
         return e
     return None
 
+def write_file(content, file_path):
+    try:
+        with open(file_path, 'w', encoding='utf-8') as file:
+            file.write(content)
+    except Exception as e:
+        return e
+    return None
+
 def remove_all(directory):
     if os.path.exists(directory):
         shutil.rmtree(directory, ignore_errors=True)

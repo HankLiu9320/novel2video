@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import AIImageGenerator from "./image";
+import AIImageGeneratorNew from "./image-new";
 import TextEditor from "@/app/text";
 import PromptsEditor from "@/app/prompts";
 import CharacterExtractor from "@/app/character";
@@ -27,6 +28,9 @@ export default function Home() {
                 <div style={styles.item} onClick={() => setActiveTab("roles")}>
                     角色提取
                 </div>
+                <div style={styles.item} onClick={() => setActiveTab("image-new")}>
+                    画面提取
+                </div>
                 <div style={styles.item} onClick={() => setActiveTab("image")}>
                     提取图像
                 </div>
@@ -39,6 +43,7 @@ export default function Home() {
                 {activeTab === "prompts" && <PromptsEditor/>}
                 {activeTab === "character" && <CharacterExtractor/>}
                 {activeTab === "roles" && <RolesExtractor/>}
+                {activeTab === "image-new" && <AIImageGeneratorNew/>}
                 {activeTab === "image" && <AIImageGenerator/>}
                 {activeTab === "video" && <VideoGenerator/>}
                 {activeTab === "models" && <Models/>}

@@ -38,3 +38,7 @@ th, td {
 .fixed-width {
     width: 100px;
 }
+
+.fixed-width-200 {
+    width: 150px;
+}

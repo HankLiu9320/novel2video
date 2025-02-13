@@ -5,7 +5,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 import edge_tts
 
-from backend.util.constant import audio_dir, novel_fragments_dir
+from backend.util.constant import audio_dir
 from backend.util.file import read_lines_from_directory
 
 
@@ -32,6 +32,7 @@ async def by_edge_tts():
     if os.path.exists(audio_dir):
         shutil.rmtree(audio_dir)
     os.makedirs(audio_dir, exist_ok=True)
+    novel_fragments_dir = ""
     lines, err = read_lines_from_directory(novel_fragments_dir)
     if err:
         raise "Failed to read fragments"

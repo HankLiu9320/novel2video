@@ -25,43 +25,43 @@
 ## 输出格式：
 [
     {
-        "序号": "1",
-        "段落原文": "[段落原文]",
-        "画面文本": [
+        "index": "1",
+        "text": "[段落原文]",
+        "storyboard": [
             {
-                "画面序号":"1",
-                "画面文本": "[画面文本1]",
-                "字幕": "[字幕1]",
+                "storyboard_index":"1",
+                "storyboard_text": "[画面文本1]",
+                "storyboard_subtitle": "[字幕1]",
                 "prompts": "[prompts1]",
-                "negative prompts": "[negative prompts1]"
+                "negative_prompts": "[negative prompts1]"
             },
             {
-                "画面序号":"2",
-                "画面文本": "[画面文本1]",
-                "字幕": "[字幕1]",
+                "storyboard_index":"2",
+                "storyboard_text": "[画面文本1]",
+                "storyboard_subtitle": "[字幕1]",
                 "prompts": "[prompts1]",
-                "negative prompts": "[negative prompts1]"
+                "negative_prompts": "[negative prompts1]"
             }
             ...
         ]
     },
     {
-        "序号": "2",
-        "段落原文": "[段落原文]",
-        "画面文本": [
+        "index": "2",
+        "text": "[段落原文]",
+        "storyboard": [
             {
-                "画面序号":"1",
-                "画面文本": "[画面文本1]",
-                "字幕": "[字幕1]",
+                "storyboard_index":"1",
+                "storyboard_text": "[画面文本1]",
+                "storyboard_subtitle": "[字幕1]",
                 "prompts": "[prompts1]",
-                "negative prompts": "[negative prompts1]"
+                "negative_prompts": "[negative prompts1]"
             },
             {
-                "画面序号":"2",
-                "画面文本": "[画面文本1]",
-                "字幕": "[字幕1]",
+                "storyboard_index":"2",
+                "storyboard_text": "[画面文本1]",
+                "storyboard_subtitle": "[字幕1]",
                 "prompts": "[prompts1]",
-                "negative prompts": "[negative prompts1]"
+                "negative_prompts": "[negative prompts1]"
             }
             ...
         ]

@@ -21,6 +21,7 @@ def query_openai(input_text: str, sys: str, temperature: float) -> str:
             stream = False
         )
 
+        print(f"response: {response}")
         return response.choices[0].message.content
     except Exception as e:
         print(f"An error occurred when querying llm: {e}")
