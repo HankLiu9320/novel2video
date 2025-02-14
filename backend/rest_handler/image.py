@@ -66,6 +66,7 @@ def generate_single_image():
         if not req or 'name' not in req or 'content' not in req:
             return jsonify({"error": "parse request body failed"}), 400
         file = os.path.join("/images", str(req['outdir']), str(req['name'])+'.png')
+        logging.info(f"file:{file}")
         asyncio.run(async_generate_image_single(req['content'], req['name'], req['outdir']))
     except Exception as e:
         return handle_error("Failed to read fragments", e)

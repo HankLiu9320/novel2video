@@ -5,7 +5,14 @@ import Image from "next/image";
 import {showToast} from "@/app/toast";
 import {ToastContainer} from "react-toastify";
 
+// 定义对象的类型
+interface Item {
+  file: string;
+  storyboards: object[];
+}
+
 export default function AIImageGenerator() {
+    const [storyboardDatas, setStoryboardDatas] = useState<Item[]>([]);
     const [images, setImages] = useState<string[]>([]);
     const [fragments, setFragments] = useState<string[]>([]);
     const [prompts, setPrompts] = useState<string[]>([]);
@@ -26,7 +33,9 @@ export default function AIImageGenerator() {
         fetch('http://localhost:1198/api/novel/initial')
             .then(response => response.json())
             .then(data => {
-                setFragments(data || []);
+//                 setFragments(data || []);
+                setStoryboardDatas(data || []);
+                console.log(storyboardDatas)
                 setLoaded(true);
             })
             .catch(error => {
@@ -78,6 +87,28 @@ export default function AIImageGenerator() {
         }
     };
 
+    const fanyi = async (index:number, storyboardIndex:number, itemIndex:number, desc: string) => {
+        console.log(desc)
+        try {
+            const response = await fetch('http://localhost:1198/api/prompt/translate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({"content":desc}),
+            })
+
+            const translateRes = await response.json()
+            const newStoryboardDatas = [...storyboardDatas];
+            newStoryboardDatas[index].storyboards[storyboardIndex].storyboard[itemIndex].prompts = translateRes["en"];
+            setStoryboardDatas(newStoryboardDatas);
+            showToast("成功");
+        } catch (error) {
+            showToast("失败");
+            console.error('Failed to generate random description:', error)
+        }
+    }
+
     const generateAllImages = () => {
         setImages([]);
         showToast('开始生成，请等待');
@@ -116,70 +147,18 @@ export default function AIImageGenerator() {
             .catch(error => console.error('Error fetching image:', error));
     };
 
-    const mergeFragments = (index: number, direction: 'up' | 'down') => {
-        if ((direction === 'up' && index === 0) || (direction === 'down' && index === fragments.length - 1)) {
-            return;
-        }
-
-        const newFragments = [...fragments];
-        const newImages = [...images];
-        const newPrompts = [...prompts]
-        const newPromptsEn = [...promptsEn]
-
-        if (direction === 'up') {
-            newFragments[index - 1] += ' ' + newFragments[index];
-            newFragments.splice(index, 1);
-            newImages.splice(index, 1);
-            newPrompts.splice(index, 1)
-            newPromptsEn.splice(index, 1)
-        } else if (direction === 'down') {
-            newFragments[index] += ' ' + newFragments[index + 1];
-            newFragments.splice(index + 1, 1);
-            newImages.splice(index + 1, 1);
-            newPrompts.splice(index+1, 1)
-            newPromptsEn.splice(index+1, 1)
-        }
-
-        setFragments(newFragments);
-        setImages(newImages);
-        setPromptsEn(prompts)
-        setPrompts(prompts)
-        // todo 是不是最好都重新保存一下
-        saveFragments(newFragments);
-    };
-
-    const saveFragments = async (fragments: string[]) => {
-        try {
-            const response = await fetch('http://localhost:1198/api/save/novel/fragments', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(fragments),
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to save fragments');
-            }
-            console.log('Fragments saved successfully');
-        } catch (error) {
-            console.error('Error saving fragments:', error);
-        }
-    };
-
-    const generateSingleImage = async (index:number) => {
+    const generateSingleImage = async (index:number, storyboardIndex:number, itemIndex:number, prompts: string) => {
         try {
             showToast('开始');
-            const updatedImages = [...images];
-            updatedImages[index] = "http://localhost:1198/images/placeholder.png";
             const response = await fetch('http://localhost:1198/api/novel/image', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    index: index,
-                    content: promptsEn[index]
+                    name: index + "-" + storyboardIndex + "-" + itemIndex,
+                    content: prompts,
+                    outdir: "storyboard/"
                 }),
             });
             if (!response.ok) {
@@ -187,9 +166,9 @@ export default function AIImageGenerator() {
             }
             const data = await response.json();
             const imageUrl = data.url;
-            updatedImages[index] = addCacheBuster(`http://localhost:1198${imageUrl}`);
-            setImages(updatedImages);
-            console.log(`successfully regenerate image for prompt ${index}.`);
+            const url = addCacheBuster(`http://localhost:1198${imageUrl}`);
+            handleRoleChange(roleName, url, "imgUrl")
+            console.log(`successfully regenerate image for prompt ${name}.`);
             showToast('成功');
         } catch (error) {
             console.error('Error saving attachment:', error);
@@ -287,11 +266,7 @@ export default function AIImageGenerator() {
                 <button onClick={extractStoryboard} className="extract-prompts-button">分镜</button>
                 {loaded && (
                     <>
-                        <button onClick={extractStoryboard} className="extract-prompts-button">分镜</button>
-                        <button onClick={generatePromptsEn} className="generate-promptsEn" disabled={isLoading}>
-                            {isLoading ? 'Generating...' : '翻译成英文'}
-                        </button>
-                        <button onClick={generateAllImages} className="generate-all">一键生成</button>
+                        <button onClick={generateAllImages} className="generate-all">一键生图</button>
                         <button onClick={initialize} className="refresh-images">刷新</button>
                         <button onClick={generateAudio} className="generate-audio">生成音频</button>
                     </>
@@ -309,14 +284,14 @@ export default function AIImageGenerator() {
                     </tr>
             {loaded && (
                 <>
-                    {fragments.map((line, index) => (
-                        line.storyboards.map(item => (
+                    {storyboardDatas.map((storyboardData, index) => (
+                        storyboardData.storyboards.map((storyboardObj, storyboardIndex) => (
                         <tr>
                             <td>
-                              <span>{line.file}</span>
+                              <span>{storyboardData.file}</span>
                             </td>
                             <td>
-                              <span>{item.text}</span>
+                              <span>{storyboardObj.text}</span>
                             </td>
 
                             <td>
@@ -333,29 +308,64 @@ export default function AIImageGenerator() {
                                 <th width="300">字幕</th>
                                 <th width="300">图</th>
                             </tr>
-                            {item.storyboard.map(storyboard=>(
+                            {storyboardObj.storyboard.map((storyboard, itemIndex)=>(
                                <tr>
                                    <td><span>{storyboard.storyboard_index}</span></td>
                                    <td width="300">
-                                       <textarea value={storyboard.storyboard_text} rows={4} className="scrollable"></textarea>
-                                       <button onClick={() => saveStoryboard(line.file, item.index, storyboard.storyboard_index, "storyboard_text", storyboard.storyboard_text)}>保存</button>
+                                       <textarea
+                                            value={storyboardDatas[index].storyboards[storyboardIndex].storyboard[itemIndex].storyboard_text} rows={4} className="scrollable"
+                                            onChange={(e) => {
+                                              const newStoryboardDatas = [...storyboardDatas];
+                                              newStoryboardDatas[index].storyboards[storyboardIndex].storyboard[itemIndex].storyboard_text = e.target.value;
+                                              setStoryboardDatas(newStoryboardDatas);
+                                            }}
+                                       ></textarea>
+                                       <button onClick={() => fanyi(index, storyboardIndex, itemIndex, storyboard.storyboard_text)}>翻译</button>
+                                       <button onClick={() => saveStoryboard(storyboardData.file, storyboardObj.index, storyboard.storyboard_index, "storyboard_text", storyboard.storyboard_text)}>保存</button>
                                    </td>
                                    <td>
                                         <textarea
-                                           value={storyboard.prompts || ''}
+                                           value={storyboardDatas[index].storyboards[storyboardIndex].storyboard[itemIndex].prompts || ''}
                                            placeholder="prompt"
                                            onChange={(e) => {
-                                               const newAttachments = [...prompts];
-                                               newAttachments[index] = e.target.value;
-                                               setPrompts(newAttachments);
+                                               const newStoryboardDatas = [...storyboardDatas];
+                                                newStoryboardDatas[index].storyboards[storyboardIndex].storyboard[itemIndex].prompts = e.target.value;
+                                                setStoryboardDatas(newStoryboardDatas);
                                            }}
                                            rows={4}
                                            className="scrollable"
                                        ></textarea>
-                                       <button onClick={() => savePromptZh(index)}>保存</button>
+                                       <button onClick={() => generateSingleImage(index, storyboardIndex, itemIndex, storyboard.prompts)}>生图</button>
+                                       <button onClick={() => saveStoryboard(storyboardData.file, storyboardObj.index, storyboard.storyboard_index, "prompts", storyboard.prompts)}>保存</button>
                                    </td>
-                                   <td><span>{storyboard.negative_prompts}</span></td>
-                                   <td><span>{storyboard.storyboard_subtitle}</span></td>
+                                   <td>
+                                       <textarea
+                                          value={storyboardDatas[index].storyboards[storyboardIndex].storyboard[itemIndex].negative_prompts || ''}
+                                          placeholder="prompt"
+                                          onChange={(e) => {
+                                              const newStoryboardDatas = [...storyboardDatas];
+                                               newStoryboardDatas[index].storyboards[storyboardIndex].storyboard[itemIndex].negative_prompts = e.target.value;
+                                               setStoryboardDatas(newStoryboardDatas);
+                                          }}
+                                          rows={4}
+                                          className="scrollable"
+                                      ></textarea>
+                                      <button onClick={() => saveStoryboard(storyboardData.file, storyboardObj.index, storyboard.storyboard_index, "negative_prompts", storyboard.negative_prompts)}>保存</button>
+                                   </td>
+                                   <td>
+                                    <textarea
+                                         value={storyboardDatas[index].storyboards[storyboardIndex].storyboard[itemIndex].storyboard_subtitle || ''}
+                                         placeholder="prompt"
+                                         onChange={(e) => {
+                                             const newStoryboardDatas = [...storyboardDatas];
+                                              newStoryboardDatas[index].storyboards[storyboardIndex].storyboard[itemIndex].storyboard_subtitle = e.target.value;
+                                              setStoryboardDatas(newStoryboardDatas);
+                                         }}
+                                         rows={4}
+                                         className="scrollable"
+                                     ></textarea>
+                                     <button onClick={() => saveStoryboard(storyboardData.file, storyboardObj.index, storyboard.storyboard_index, "storyboard_subtitle", storyboard.storyboard_subtitle)}>保存</button>
+                                    </td>
                                    <td>
                                        <img width="100" src={storyboard.storyboard_image}/>
                                    </td>
