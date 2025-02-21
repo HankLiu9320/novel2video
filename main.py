@@ -6,7 +6,7 @@ from flask_cors import CORS
 
 from backend.rest_handler.character import get_local_characters, get_new_characters, get_random_appearance, \
     put_characters
-from backend.rest_handler.image import generate_images, get_local_images, generate_single_image
+from backend.rest_handler.image import generate_images, get_local_images, generate_single_image, generate_role_images
 from backend.rest_handler.init import get_initial, load_novel, save_novel, \
     save_prompt, load_prompt, get_model_config, save_model_config, load_role_prompt, save_role_prompt
 from backend.rest_handler.prompt import extract_scene_from_texts, get_prompts_en, save_prompt_en, save_prompt_zh, \
@@ -57,6 +57,10 @@ def api_translate_text():
     return translate_text()
 
 # image
+@app.route('/api/role/images', methods=['POST']) # 一键生成
+def api_generate_role_image():
+    return generate_role_images()
+
 @app.route('/api/novel/images', methods=['POST']) # 一键生成
 def api_generate_image():
     return generate_images()

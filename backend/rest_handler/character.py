@@ -6,7 +6,7 @@ import shutil
 from flask import request, jsonify
 
 from backend.llm.llm import query_llm
-from backend.util.constant import character_dir, role_prompt_path, novel_paragraphs_dir
+from backend.util.constant import character_dir, role_prompt_path, novel_paragraphs_dir, characters_path
 from backend.util.file import read_file
 
 extract_character_sys = """
@@ -54,7 +54,7 @@ def get_new_characters():
                 character_map[split[0].strip()] = desc_map
 
         # Save characters to a file
-        with open(os.path.join(character_dir, 'characters.txt'), 'w') as file:
+        with open(os.path.join(character_dir, characters_path), 'w') as file:
             json.dump(character_map, file, ensure_ascii=False, indent=4)
 
         return jsonify(character_map), 200
@@ -68,7 +68,7 @@ def get_local_characters():
     try:
         if not os.path.exists(character_dir):
             return jsonify({"error": "no local characters"}), 40401
-        with open(os.path.join(character_dir, 'characters.txt'), 'r', encoding='utf-8') as file:
+        with open(os.path.join(character_dir, characters_path), 'r', encoding='utf-8') as file:
             character_map = json.load(file)
         return jsonify(character_map), 200
     except Exception as e:
@@ -82,12 +82,12 @@ def put_characters():
         if not descriptions:
             return jsonify({"error": "Invalid JSON"}), 400
 
-        with open(os.path.join(character_dir, 'characters.txt'), 'r', encoding='utf-8') as file:
+        with open(os.path.join(character_dir, characters_path), 'r', encoding='utf-8') as file:
             character_map = json.load(file)
 
         character_map.update(descriptions)
         # Save descriptions to a file
-        with open(os.path.join(character_dir, 'characters.txt'), 'w', encoding='utf-8') as file:
+        with open(os.path.join(character_dir, characters_path), 'w', encoding='utf-8') as file:
             json.dump(character_map, file, ensure_ascii=False, indent=4)
 
         return jsonify({"message": "Descriptions updated successfully"}), 200

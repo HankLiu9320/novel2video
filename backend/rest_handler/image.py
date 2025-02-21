@@ -7,7 +7,8 @@ import re
 from flask import jsonify, request
 
 from backend.image.image import generate_image, generate_images_single
-from backend.util.constant import image_dir, image_storyboard_dir, novel_storyboard_dir
+from backend.util.constant import image_dir, image_storyboard_dir, novel_storyboard_dir, image_role_dir, character_dir, \
+    characters_path
 from backend.util.file import make_dir, remove_all, read_files_from_directory, read_file
 
 
@@ -28,7 +29,36 @@ async def async_generate_image_single(content, name, outdir):
     except Exception as e:
         logging.error(e)
         raise
-                
+
+def generate_role_images():
+    try:
+        remove_all(image_role_dir)
+        make_dir(image_role_dir)
+    except Exception as e:
+        return handle_error("Failed to manage directory", e)
+    try:
+        file_path = os.path.join(character_dir, characters_path)
+        characters = read_file(file_path)
+        data = json.loads(characters)
+
+        for character in data:
+            name = character;
+            jdata = data[character];
+            prompts = jdata.get('prompts', '')
+            outdir = "role/"
+            file = os.path.join("/images", outdir, name + '.png')
+            asyncio.run(generate_images_single(prompts, name, outdir))
+            data[character]['imgUrl'] = file
+
+            with open(file_path, 'w') as file:
+                json.dump(data, file, ensure_ascii=False, indent=4)
+
+
+    except Exception as e:
+        return handle_error("Failed to read fragments", e)
+    return jsonify({"status": "Image generation started"}), 200
+
+
 def generate_images():
     try:
         remove_all(image_storyboard_dir)

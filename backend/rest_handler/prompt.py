@@ -8,7 +8,7 @@ import shutil
 from flask import request, jsonify
 
 from backend.llm.llm import llm_translate, query_llm
-from backend.util.constant import character_dir, prompts_dir, prompts_en_dir, prompt_path
+from backend.util.constant import character_dir, prompts_dir, prompts_en_dir, prompt_path, characters_path
 from backend.util.file import read_lines_from_directory, save_list_to_files, read_file
 
 fragmentsLen = 30
@@ -95,7 +95,7 @@ def get_prompts_en():
 
     try:
         character_map = {}
-        p = os.path.join(character_dir, 'characters.txt')
+        p = os.path.join(character_dir, characters_path)
         if os.path.exists(p):
             with open(p, 'r', encoding='utf8') as file:
                 character_map = json.load(file)

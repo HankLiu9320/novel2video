@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react'
 import Image from "next/image";
 import {showToast} from "@/app/toast";
 import {ToastContainer} from "react-toastify";
-
+import {API_URL} from "@/app/constants";
 
 export default function RolesExtractor() {
     const [roles, setRoles] = useState<Record<string, object>>({})
@@ -78,6 +78,24 @@ export default function RolesExtractor() {
             console.error('Failed to generate random description:', error)
         }
     }
+
+    const generateAllImages = () => {
+        showToast('开始生成，请等待');
+        fetch(API_URL + 'api/role/images', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(response => response.json())
+        .then(() => {
+            console.log('Images generation initiated');
+        })
+        .catch(error => {
+            showToast('失败，请检查日志');
+            console.error('Error generating all images:', error)
+        });
+    };
 
     const generateSingleImage = async (roleName:string, prompts: string) => {
         try {
@@ -205,6 +223,22 @@ export default function RolesExtractor() {
                     }}
                 >
                     {isLoading ? '加载中...' : '提取角色'}
+                </button>
+                <button
+                    onClick={() => generateAllImages()}
+                    disabled={isLoading}
+                    style={{
+                        padding: '10px 20px',
+                        fontSize: '16px',
+                        backgroundColor: '#1a1a1a',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '5px',
+                        cursor: 'pointer',
+                        transition: 'background-color 0.3s'
+                    }}
+                >
+                    {isLoading ? '加载中...' : '一键生图'}
                 </button>
             </div>
             <table style={{
