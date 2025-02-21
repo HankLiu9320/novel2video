@@ -1,20 +1,35 @@
 {
     "柳无邪": {
-        "desc": "20岁，男孩，黑色长发，凌乱不堪，身穿破损的青色长袍，身材瘦削，面容憔悴，眼神中透露出一丝不屈和迷茫",
-        "imgUrl": "http://localhost:1198/images/role/柳无邪.png?v=1739010185877",
-        "name": "柳无邪",
-        "prompts": "20 years old, male, with black, disheveled long hair, wearing a torn green robe, emaciated, haggard, eyes showing a hint of defiance and confusion."
+        "desc": "25岁，男性，破旧灰色长袍，黑色布鞋，短发，面容憔悴，身上有灰尘",
+        "name": "柳无邪"
     },
     "徐义林": {
-        "desc": "45岁，男性，灰色短发，身穿深蓝色锦缎长袍，腰间系着玉带，面容严肃，眼神中带着一丝忧虑和期待",
-        "imgUrl": "http://localhost:1198/images/role/徐义林.png?v=1739009146910",
+        "desc": "40岁，男性，灰色长袍，黑色腰带，黑色布鞋，短发，面容严肃",
         "name": "徐义林",
-        "prompts": "45, male, with short gray hair, wearing a deep blue silk robe, with an jade belt around his waist, his face serious with a hint of worry and expectation in his eyes."
+        "prompts": "40 years old, male, wearing a long gray robe, a black belt, black cloth shoes, short hair, serious expression on the face"
     },
     "徐家大小姐": {
-        "desc": "18岁，女孩，黑色长发，梳成精致的发髻，身穿红色嫁衣，面容清秀，眼神中带着愤怒和失望",
-        "imgUrl": "http://localhost:1198/images/role/徐家大小姐.png?v=1739009146910",
-        "name": "徐家大小姐",
-        "prompts": "\n18 years old, girl, black long hair, styled into an exquisite bun, wearing a red wedding dress, with a fair face, eyes filled with anger and disappointment"
+        "desc": "18岁，女孩，黑色长发，梳成精致的发髻，身穿红色嫁衣，绣有金色凤凰图案，面容清秀",
+        "name": "徐家大小姐"
+    },
+    "罗开": {
+        "desc": "25岁，男性，黑色头发，灰色破旧长袍，身材瘦弱，面色苍白，胸口有诡异掌印",
+        "name": "罗开"
+    },
+    "老鸨": {
+        "desc": "40岁，女人，红色头发，红色长裙，脸上涂有厚厚的胭脂粉，刺鼻的香气，面容丑陋",
+        "name": "老鸨"
+    },
+    "小厮1": {
+        "desc": "20岁，男性，蓝色短衫，黑色裤子，黑色布鞋，短发",
+        "name": "小厮1",
+        "prompts": "1 girl,solo,brown hair,brown eyes,smile,hair bow,white neckerchief,black shirt,school uniform,looking at viewer,outdoors,pink flower,cherry blossoms,branch,",
+        "imgUrl": "http://localhost:1198/images/role/小厮1.png?v=1739630826172"
+    },
+    "小厮2": {
+        "desc": "20岁，男性，蓝色短衫，黑色裤子，黑色布鞋，短发",
+        "name": "小厮2",
+        "prompts": "\n20-year-old, male, blue short-sleeved shirt, black pants, black cloth shoes, short hair",
+        "imgUrl": "http://localhost:1198/images/role/小厮2.png?v=1739630861008"
     }
 }

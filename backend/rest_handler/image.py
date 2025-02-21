@@ -1,14 +1,15 @@
 import asyncio
+import json
 import logging
-
-from flask import Flask, jsonify, request
 import os
 import re
-import time
+
+from flask import jsonify, request
 
 from backend.image.image import generate_image, generate_images_single
-from backend.util.constant import image_dir, prompts_en_dir
-from backend.util.file import make_dir, read_lines_from_directory, remove_all
+from backend.util.constant import image_dir, image_storyboard_dir, novel_storyboard_dir
+from backend.util.file import make_dir, remove_all, read_files_from_directory, read_file
+
 
 def handle_error(message, err):
     return jsonify({"error": message}), 500
@@ -30,15 +31,46 @@ async def async_generate_image_single(content, name, outdir):
                 
 def generate_images():
     try:
-        remove_all(image_dir)
-        make_dir(image_dir)
+        remove_all(image_storyboard_dir)
+        make_dir(image_storyboard_dir)
     except Exception as e:
         return handle_error("Failed to manage directory", e)
     try:
-        lines, err = read_lines_from_directory(prompts_en_dir)
-        if err:
-            return handle_error("Failed to read fragments", err)
-        asyncio.run(async_generate_images(lines))
+        files = read_files_from_directory(novel_storyboard_dir)
+        data = []
+        fileIdx = 0;
+
+        for file in files:
+            file_path = os.path.join(novel_storyboard_dir, file)
+            storyboard = read_file(file_path)
+            data = json.loads(storyboard)
+            storyboardObjIdx = 0;
+
+            for storyboardObj in data:
+                storyboards = storyboardObj["storyboard"]
+
+                itemIdx = 0;
+                for storyboardItem in storyboards:
+                    print(storyboardItem["storyboard_text"], storyboardItem["prompts"])
+                    content = storyboardItem["prompts"]
+                    name = f"{fileIdx}-{storyboardObjIdx}-{itemIdx}"
+                    outdir = "storyboard/"
+                    file = os.path.join("/images", outdir, name + '.png')
+                    asyncio.run(generate_images_single(content, name, outdir))
+                    data[storyboardObjIdx]['storyboard'][itemIdx]['storyboard_image'] = file
+
+                    with open(file_path, 'w') as file:
+                        json.dump(data, file, ensure_ascii=False, indent=4)
+
+                    itemIdx += 1
+
+                storyboardObjIdx += 1
+
+            fileIdx += 1
+
+        # if err:
+        #     return handle_error("Failed to read fragments", err)
+        # asyncio.run(async_generate_images(lines))
     except Exception as e:
         return handle_error("Failed to read fragments", e)
     return jsonify({"status": "Image generation started"}), 200

@@ -16,7 +16,7 @@ async def generate_one_image(prompt: str, negative_prompt: str, seed: int, out_d
         url = get_config()['address3']
         sdConfig = get_config()['sdConfig']
 
-        sdConfig["prompt"] = prompt
+        sdConfig["prompt"] = prompt + '<lora:NijiExpressV2:0.5>'
         sdConfig["negative_prompt"] = negative_prompt or sdConfig['negative_prompt'] or ""
         sdConfig["seed"] = seed | -1
         payload = sdConfig

@@ -1,9 +1,10 @@
 import os
-from pathlib import Path
 
 base_dir = os.path.join(os.getcwd(), "temp")
 
 image_dir = os.path.join(base_dir, "image")
+image_storyboard_dir = os.path.join(image_dir, "storyboard")
+
 character_dir = os.path.join(base_dir, "character")
 novel_paragraphs_dir = os.path.join(base_dir, "paragraphs")
 novel_storyboard_dir = os.path.join(base_dir, "storyboard")

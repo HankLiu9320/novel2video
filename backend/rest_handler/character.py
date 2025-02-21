@@ -6,7 +6,7 @@ import shutil
 from flask import request, jsonify
 
 from backend.llm.llm import query_llm
-from backend.util.constant import character_dir, role_prompt_path
+from backend.util.constant import character_dir, role_prompt_path, novel_paragraphs_dir
 from backend.util.file import read_file
 
 extract_character_sys = """
@@ -25,6 +25,7 @@ extract_character_sys = """
 """
 extract_character_sys = read_file(role_prompt_path)
 
+
 def get_new_characters():
     try:
         # Remove and recreate the character directory
@@ -34,15 +35,16 @@ def get_new_characters():
 
         # Read lines from the prompts directory
         lines = []
-        # for file_name in os.listdir(novel_fragments_dir):
-        #     with open(os.path.join(novel_fragments_dir, file_name), 'r', encoding='utf-8') as file:
-        #         lines.extend(file.readlines())
+        sorted_files_and_dirs = sorted(os.listdir(novel_paragraphs_dir))
+
+        for file_name in sorted_files_and_dirs:
+            content = read_file(os.path.join(novel_paragraphs_dir, file_name))
+            lines.append(content)
 
         # Process lines in chunks
         character_map = {}
-        for i in range(0, len(lines), 500):
-            end = min(i + 500, len(lines))
-            prompt = ''.join(lines[i:end])
+        for line in lines:
+            prompt = line
             response = query_llm(prompt, extract_character_sys, 0.01, 8192)
             for character in response.split('/'):
                 split = character.split(":")

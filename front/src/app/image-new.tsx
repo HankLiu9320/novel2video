@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 import {showToast} from "@/app/toast";
 import {ToastContainer} from "react-toastify";
-
+import {API_URL} from "@/app/constants";
 // 定义对象的类型
 interface Item {
   file: string;
@@ -30,7 +30,7 @@ export default function AIImageGenerator() {
   }
 
     const initialize = () => {
-        fetch('http://localhost:1198/api/novel/initial')
+        fetch(API_URL + 'api/novel/initial')
             .then(response => response.json())
             .then(data => {
 //                 setFragments(data || []);
@@ -45,12 +45,12 @@ export default function AIImageGenerator() {
     };
 
     const extractStoryboard = () => {
-        setPrompts([]);
+        setStoryboardDatas([])
         showToast('开始生成');
-        fetch('http://localhost:1198/api/save/novel/storyboard')
+        fetch(API_URL + 'api/save/novel/storyboard')
             .then(response => response.json())
             .then(data => {
-            setPrompts(data || []);
+            initialize()
             console.log('Prompts fetched successfully');
         })
         .catch(error => {
@@ -64,7 +64,7 @@ export default function AIImageGenerator() {
 
         try {
 
-            const response = await fetch('http://localhost:1198/api/update/novel/storyboard', {
+            const response = await fetch(API_URL + 'api/update/novel/storyboard', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ export default function AIImageGenerator() {
     const fanyi = async (index:number, storyboardIndex:number, itemIndex:number, desc: string) => {
         console.log(desc)
         try {
-            const response = await fetch('http://localhost:1198/api/prompt/translate', {
+            const response = await fetch(API_URL + 'api/prompt/translate', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -112,27 +112,27 @@ export default function AIImageGenerator() {
     const generateAllImages = () => {
         setImages([]);
         showToast('开始生成，请等待');
-        fetch('http://localhost:1198/api/novel/images', {
+        fetch(API_URL + 'api/novel/images', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
         })
-            .then(response => response.json())
-            .then(() => {
-                console.log('Images generation initiated');
-                refreshImages();
-            })
-            .catch(error => {
-                showToast('失败，请检查日志');
-                console.error('Error generating all images:', error)
-            });
+        .then(response => response.json())
+        .then(() => {
+            console.log('Images generation initiated');
+            refreshImages();
+        })
+        .catch(error => {
+            showToast('失败，请检查日志');
+            console.error('Error generating all images:', error)
+        });
     };
 
     type ImageMap = Record<string, string>;
 
     const refreshImages = () => {
-        fetch('http://localhost:1198/api/novel/images')
+        fetch(API_URL + 'api/novel/images')
             .then(response => response.json() as Promise<ImageMap>)
             .then((imageMap: ImageMap) => {
                 const updatedImages = [...images];
@@ -150,7 +150,7 @@ export default function AIImageGenerator() {
     const generateSingleImage = async (index:number, storyboardIndex:number, itemIndex:number, prompts: string) => {
         try {
             showToast('开始');
-            const response = await fetch('http://localhost:1198/api/novel/image', {
+            const response = await fetch(API_URL + 'api/novel/image', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -167,7 +167,10 @@ export default function AIImageGenerator() {
             const data = await response.json();
             const imageUrl = data.url;
             const url = addCacheBuster(`http://localhost:1198${imageUrl}`);
-            handleRoleChange(roleName, url, "imgUrl")
+            const newStoryboardDatas = [...storyboardDatas];
+            newStoryboardDatas[index].storyboards[storyboardIndex].storyboard[itemIndex].storyboard_image = imageUrl;
+            setStoryboardDatas(newStoryboardDatas);
+            saveStoryboard(index, storyboardIndex, itemIndex, "storyboard_image", imageUrl)
             console.log(`successfully regenerate image for prompt ${name}.`);
             showToast('成功');
         } catch (error) {
@@ -367,7 +370,10 @@ export default function AIImageGenerator() {
                                      <button onClick={() => saveStoryboard(storyboardData.file, storyboardObj.index, storyboard.storyboard_index, "storyboard_subtitle", storyboard.storyboard_subtitle)}>保存</button>
                                     </td>
                                    <td>
-                                       <img width="100" src={storyboard.storyboard_image}/>
+                                    {storyboard.storyboard_image ?
+                                           (<img width="100" src={API_URL + storyboard.storyboard_image}/>)
+                                   : ""}
+                                       <button onClick={() => saveStoryboard(storyboardData.file, storyboardObj.index, storyboard.storyboard_index, "storyboard_image", storyboard.storyboard_image)}>保存</button>
                                    </td>
                                </tr>
                             ))}

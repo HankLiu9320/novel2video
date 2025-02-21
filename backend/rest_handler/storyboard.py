@@ -5,7 +5,7 @@ import shutil
 from flask import request, jsonify
 
 from backend.llm.llm import query_llm
-from backend.util.constant import novel_storyboard_dir, novel_paragraphs_dir
+from backend.util.constant import novel_storyboard_dir, novel_paragraphs_dir, character_dir
 from backend.util.constant import prompt_path
 from backend.util.file import read_file, write_file
 
@@ -20,6 +20,14 @@ def extract_storyboard_from_texts():
             os.makedirs(novel_storyboard_dir)
 
         prompt = read_file(prompt_path)
+
+        with open(os.path.join(character_dir, 'characters.txt'), 'r', encoding='utf-8') as file:
+            character_map = json.load(file)
+            names = [d['name'] for d in character_map.values()]
+            # 将列表中的名字用逗号拼接成一个字符串
+            names_string = ','.join(names)
+            prompt = prompt.replace("%roles%", names_string)
+
         sorted_files_and_dirs = sorted(os.listdir(novel_paragraphs_dir))
 
         for file_name in sorted_files_and_dirs:
