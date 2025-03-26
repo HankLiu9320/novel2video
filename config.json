@@ -1,9 +1,9 @@
 {
-    "url": "https://api.deepseek.com",
-    "model": "deepseek-chat",
-    "apikey": "sk-2ae01c14d3154609abe545becda9a277",
+    "url": "https://api.lkeap.cloud.tencent.com/v1",
+    "model": "deepseek-v3",
+    "apikey": "sk-Qhea9l1kK6XFJzTUe38cKIvFqr15xCQdNMak09SOIH5QqXWT",
     "address2": "sk-rddjtjldnrqaiabgrvbkriwdgxpvgbijvoboohdntrvmymwu",
-    "address3": "http://127.0.0.1:7861",
+    "address3": "http://139.9.62.165:10111",
     "address3Type": "stable_diffusion_web_ui",
     "comfyuiNodeApi": {
         "5": {
@@ -289,7 +289,7 @@
         "hr_upscaler": "R-ESRGAN 4x+",
         "negative_prompt": "ng_deepnegative_v1_75t,(badhandv4:1.2),(worst quality:2),(low quality:2),(normal quality:2),lowres,bad anatomy,(bad hands),((monochrome)),((grayscale)) watermark,moles,many fingers,(broken hands),nsfw,",
         "override_settings": {
-            "sd_model_checkpoint": "AWPainting_v1.5.safetensors [4801d2b3d8]",
+            "sd_model_checkpoint": "古风_都市推文小说_V1.safetensors [7dc31ef147]",
             "sd_vae": "Automatic"
         },
         "sampler_name": "DPM++ 2M",

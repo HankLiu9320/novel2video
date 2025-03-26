@@ -1,40 +1,36 @@
 {
     "柳无邪": {
-        "desc": "25岁，男性，破旧灰色长袍，黑色布鞋，短发，面容憔悴，身上有灰尘",
+        "desc": "年轻男性，破旧灰色长袍，黑色布鞋，短发，面容憔悴",
         "name": "柳无邪",
-        "imgUrl": "/images/role/柳无邪.png"
-    },
-    "徐义林": {
-        "desc": "40岁，男性，灰色长袍，黑色腰带，黑色布鞋，短发，面容严肃",
-        "name": "徐义林",
-        "prompts": "40 years old, male, wearing a long gray robe, a black belt, black cloth shoes, short hair, serious expression on the face",
-        "imgUrl": "/images/role/徐义林.png"
+        "prompts": "A young man, wearing a tattered gray robe, black cloth shoes, with short hair and a haggard face.",
+        "imgUrl": "http://localhost:1198/images/role/柳无邪.png?v=1740413579846"
     },
     "徐家大小姐": {
-        "desc": "18岁，女孩，黑色长发，梳成精致的发髻，身穿红色嫁衣，绣有金色凤凰图案，面容清秀",
+        "desc": "18岁，女孩，红色嫁衣，黑色长发，头戴凤冠，身材纤细，面容清秀",
         "name": "徐家大小姐",
-        "imgUrl": "/images/role/徐家大小姐.png"
+        "prompts": "18 years old, girl, red wedding dress, long black hair, wearing a phoenix crown, slender figure, delicate features.",
+        "imgUrl": "http://localhost:1198/images/role/徐家大小姐.png?v=1740413556959"
+    },
+    "徐义林": {
+        "desc": "中年男性，灰色长袍，黑色腰带，黑色布鞋，短发，面容严肃",
+        "imgUrl": "http://localhost:1198/images/role/徐义林.png?v=1740412974017",
+        "name": "徐义林",
+        "prompts": "Middle-aged man, gray robe, black belt, black cloth shoes, short hair, serious expression."
     },
     "罗开": {
-        "desc": "25岁，男性，黑色头发，灰色破旧长袍，身材瘦弱，面色苍白，胸口有诡异掌印",
+        "desc": "20岁，男孩，黑色短发，灰色破旧布衣，身材瘦弱，胸口有掌印伤痕\n20 years old, boy, black short hair, gray tattered cloth clothes, thin build, palm print wound on chest",
         "name": "罗开",
-        "imgUrl": "/images/role/罗开.png"
+        "prompts": "A 20-year-old boy with black short hair, wearing gray tattered cloth clothes, has a thin build and a palm print wound on his chest.",
+        "imgUrl": "http://localhost:1198/images/role/罗开.png?v=1740413609628"
+    },
+    "神师": {
+        "desc": "未提供具体形象描述",
+        "name": "神师"
     },
     "老鸨": {
-        "desc": "40岁，女人，红色头发，红色长裙，脸上涂有厚厚的胭脂粉，刺鼻的香气，面容丑陋",
+        "desc": "40岁，女性，红色长裙，浓妆，刺鼻的香气，面容严厉，身材丰满",
         "name": "老鸨",
-        "imgUrl": "/images/role/老鸨.png"
-    },
-    "小厮1": {
-        "desc": "20岁，男性，蓝色短衫，黑色裤子，黑色布鞋，短发",
-        "name": "小厮1",
-        "prompts": "1 girl,solo,brown hair,brown eyes,smile,hair bow,white neckerchief,black shirt,school uniform,looking at viewer,outdoors,pink flower,cherry blossoms,branch,",
-        "imgUrl": "/images/role/小厮1.png"
-    },
-    "小厮2": {
-        "desc": "20岁，男性，蓝色短衫，黑色裤子，黑色布鞋，短发",
-        "name": "小厮2",
-        "prompts": "\n20-year-old, male, blue short-sleeved shirt, black pants, black cloth shoes, short hair",
-        "imgUrl": "/images/role/小厮2.png"
+        "prompts": "40 years old, female, wearing a red long dress, heavy makeup, strong fragrance, stern face, and a full figure.",
+        "imgUrl": "http://localhost:1198/images/role/老鸨.png?v=1740413631746"
     }
 }
