@@ -1,157 +1,20 @@
-[
-    {
-        "index": "1",
-        "text": "我没死。柳无邪是被疼醒的，身上压着几块碎木头，让他喘不上气来。接着，一团凌乱的记忆钻入他的脑海。",
-        "storyboard": [
-            {
-                "storyboard_index":"1",
-                "storyboard_text": "1.黑暗环境中，满身灰尘的黑发年轻男子（面部有擦伤，衣服残破）在废墟中睁开双眼，瞳孔收缩的特写镜头",
-                "storyboard_subtitle": "我没死。",
-                "prompts": "close-up of injured young man with messy black hair opening eyes in dark ruins, blood stains on face, dramatic lighting, hyper-detailed facial expression, debris particles in air, cinematic atmosphere, 8k ultra detailed",
-                "negative_prompts": "cartoonish, blurry, low resolution, deformed hands, extra limbs"
-            },
-            {
-                "storyboard_index":"2",
-                "storyboard_text": "2.俯视镜头中，穿着青色古装长袍的年轻男子被断裂的木梁压住胸口，双手抓挠地面的动作特写，四周散落燃烧的布料和瓷器碎片",
-                "storyboard_subtitle": "柳无邪是被疼醒的，身上压着几块碎木头，让他喘不上气来。",
-                "prompts": "top view of young man in torn green ancient robe pinned under broken wooden beams, hands clawing at rubble-strewn ground, smoldering fabrics nearby, high contrast chiaroscuro lighting, intricate costume details, smoke effects",
-                "negative_prompts": "bright lighting, clean environment, modern clothing, cartoon style"
-            },
-            {
-                "storyboard_index":"3",
-                "storyboard_text": "3.半透明记忆碎片特效围绕男子头部旋转，碎片中闪现仙界大战场景：戴神鼎发冠的白衣仙帝（30岁左右）被无数剑气包围的瞬间",
-                "storyboard_subtitle": "接着，一团凌乱的记忆钻入他的脑海。",
-                "prompts": "semi-transparent memory fragments swirling around man's head, glowing particles effect, epic battle scene in clouds with divine cauldron fragments, celestial warriors in golden armor, dynamic energy beams, surreal composition",
-                "negative_prompts": "simple background, static image, lack of motion blur, realistic portrait"
-            }
-        ]
-    },
-    {
-        "index": "2",
-        "text": "他本是凌云仙界十大仙帝之一，机缘巧合是到太荒神器吞天神顶，遭到整个仙界围攻，命丧断魂崖，最后一刻施展血魔解体术，跟他们同归于尽，炸碎了吞天神鼎。醒来的时候已经到了这里。陈武大陆徐家上门女婿败家子。",
-        "storyboard": [
-            {
-                "storyboard_index":"1",
-                "storyboard_text": "4.全景展示断魂崖场景：白发仙帝（同面部特征）立于血色法阵中心，神鼎悬浮头顶迸发万丈光芒，四周环绕数百持剑修士冲锋的战争场面",
-                "storyboard_subtitle": "他本是凌云仙界十大仙帝之一，机缘巧合是到太荒神器吞天神顶，遭到整个仙界围攻，命丧断魂崖，最后一刻",
-                "prompts": "epic battle scene on cliff edge, white-haired immortal emperor in flowing robes standing on blood ritual array, glowing divine cauldron emitting cosmic energy, hundreds of cultivators attacking from all directions, dramatic clouds and lightning effects, digital painting style",
-                "negative_prompts": "peaceful scene, modern setting, simple composition"
-            },
-            {
-                "storyboard_index":"2",
-                "storyboard_text": "5.慢动作爆炸特效：神鼎碎片携带血色能量波呈环形扩散，仙帝身体化为光粒消散，冲击波掀飞周围修士的震撼瞬间",
-                "storyboard_subtitle": "施展血魔解体术，跟他们同归于尽，炸碎了吞天神鼎。",
-                "prompts": "slow motion explosion of divine cauldron, red energy shockwave rippling through celestial army, glowing particles dissipating from immortal's body, dynamic debris scattering, hyper-realistic special effects, cinematic composition",
-                "negative_prompts": "static explosion, cartoonish effects, low detail"
-            },
-            {
-                "storyboard_index":"3",
-                "storyboard_text": "6.画面切换对比：左边仙界爆炸残光渐隐，右边浮现古代宅院屋檐下挂着红灯笼的夜景，镜头推进到废墟中的年轻男子",
-                "storyboard_subtitle": "醒来的时候已经到了这里。陈武大陆徐家上门女婿败家子。",
-                "prompts": "split screen transition showing fading battle scene left and ancient Chinese courtyard with red lanterns right, digital matte painting style, seamless morphing transition effect, detailed architectural elements",
-                "negative_prompts": "single scene, abrupt cut, modern architecture"
-            }
-        ]
-    },
-    {
-        "index": "3",
-        "text": "脑海中出现的记忆告诉他，他已经不在凌云仙界，而是重生在一个叫做真武大陆的位面，而这个少年的身体，同样也叫柳无邪。",
-        "storyboard": [
-            {
-                "storyboard_index":"1",
-                "storyboard_text": "7.第一人称视角：半透明界面浮现发光文字「真武大陆-苍蓝城」，下方有经脉穴位图在皮肤下若隐若现的视觉特效",
-                "storyboard_subtitle": "脑海中出现的记忆告诉他，他已经不在凌云仙界，而是重生在一个叫做真武大陆的位面",
-                "prompts": "first-person view of translucent holographic interface showing glowing ancient script 'Zhenwu Continent', meridian system visualization under skin with glowing energy flow, cyberpunk meets xianxia style, neon blue accents",
-                "negative_prompts": "medieval manuscript, plain text, lack of special effects"
-            },
-            {
-                "storyboard_index":"2",
-                "storyboard_text": "8.镜面反射画面：破碎铜镜中映出年轻男子面孔（同仙界仙帝年轻版），右手浮现微弱血色气旋的特写",
-                "storyboard_subtitle": "而这个少年的身体，同样也叫柳无邪。",
-                "prompts": "broken bronze mirror reflection showing young man's face identical to immortal emperor, red energy vortex swirling around right hand, intricate mirror cracks details, ambient dust particles, dramatic rim lighting",
-                "negative_prompts": "clear mirror, modern frame, no special effects"
-            }
-        ]
-    },
-    {
-        "index": "4",
-        "text": "出生富贵人家，五岁时家道变故，父母离奇失踪，造成他从小就性格狭隘孤僻，被父亲好友，未来的岳父徐义林收养后也未见好转。随着年龄的增长，性格越来越乖张跋扈，甚至认为对他视如己出的岳父图谋他的家业才收养他。",
-        "storyboard": [
-            {
-                "storyboard_index":"1",
-                "storyboard_text": "9.黑白闪回：豪华宅院燃烧夜景，五岁孩童（面部特征相似）被仆人抱着逃离，背后阴影中伸出无数苍白手臂的抽象表现",
-                "storyboard_subtitle": "出生富贵人家，五岁时家道变故，父母离奇失踪",
-                "prompts": "black and white flashback of burning mansion at night, child with similar facial features being carried by servant, abstract shadow hands reaching from flames, high contrast monochrome, expressionist style",
-                "negative_prompts": "color image, happy scene, clear details"
-            },
-            {
-                "storyboard_index":"2",
-                "storyboard_text": "10.连续蒙太奇：少年在不同场景拒绝他人接近（推开食物/撕毁书本/砸碎花瓶），中年武者（徐义林，国字脸短须）在背景摇头叹息",
-                "storyboard_subtitle": "造成他从小就性格狭隘孤僻，被父亲好友，未来的岳父徐义林收养后也未见好转。随着年龄的增长，性格越来越乖张跋扈",
-                "prompts": "montage sequence showing teenage boy rejecting kindness in various scenes, middle-aged martial artist with square jaw and short beard in background, muted color palette conveying melancholy, cinematic split-focus diopter shots",
-                "negative_prompts": "single scene, vibrant colors, happy expressions"
-            },
-            {
-                "storyboard_index":"3",
-                "storyboard_text": "11.戏剧性光影：青年在烛光下冷笑特写，背后墙上投射出巨大恶魔阴影手持算盘敲打账簿的隐喻画面",
-                "storyboard_subtitle": "甚至认为对他视如己出的岳父图谋他的家业才收养他。",
-                "prompts": "chiaroscuro lighting on young man's sneering face, symbolic shadow play showing demonic figure with abacus casting on wall, high drama renaissance painting style, deep red and black color scheme",
-                "negative_prompts": "even lighting, positive imagery, modern office"
-            }
-        ]
-    },
-    {
-        "index": "5",
-        "text": "疯狂败家，瞎混成为苍蓝城有名的败家子，整个徐家无一不用废物，蛀虫，垃圾来形容，它依旧我行我素。转眼到了成亲年纪，岳父徐义林认为结了婚之后，性格也许会收敛，而今天就是他的大婚之日，按理来说，他这样的垃圾不可能配得上徐家大小姐。",
-        "storyboard": [
-            {
-                "storyboard_index":"1",
-                "storyboard_text": "12.俯视长镜头：赌场全景展示，青年将金锭推上赌桌，周围聚集谄媚的狐朋狗友，窗外天色从黎明到黄昏的时间流逝",
-                "storyboard_subtitle": "疯狂败家，瞎混成为苍蓝城有名的败家子",
-                "prompts": "overhead tracking shot of gambling den, young man pushing gold ingots across table surrounded by flattering friends, time-lapse lighting from dawn to dusk outside windows, rich textures of mahjong tiles and silk garments",
-                "negative_prompts": "modern casino, digital interface, happy ending"
-            },
-            {
-                "storyboard_index":"2",
-                "storyboard_text": "13.多重曝光画面：重叠的仆人唾弃表情/摔碎的珍贵瓷器/燃烧的地契文档，最后聚焦在青年躺在金币堆中狂笑的合成影像",
-                "storyboard_subtitle": "整个徐家无一不用废物，蛀虫，垃圾来形容，它依旧我行我素。",
-                "prompts": "multiple exposure composite showing servants' disgusted faces overlapping with broken antiques and burning papers, final focus on young man laughing in gold coin pile, surreal collage effect",
-                "negative_prompts": "single subject, clear background, positive emotion"
-            },
-            {
-                "storyboard_index":"3",
-                "storyboard_text": "14.对比构图：左侧徐府张灯结彩的婚庆场面，右侧小巷垃圾堆旁醉醺醺的新郎官（同一人），手中还握着酒壶",
-                "storyboard_subtitle": "转眼到了成亲年纪，岳父徐义林认为结了婚之后，性格也许会收敛，而今天就是他的大婚之日，按理来说，他这样的垃圾不可能配得上徐家大小姐。",
-                "prompts": "split composition showing lavish wedding decorations left vs drunk groom in alley right, symbolic contrast using color saturation differences, intricate textile details on wedding attire",
-                "negative_prompts": "unified scene, romantic atmosphere, clean groom"
-            }
-        ]
-    },
-    {
-        "index": "6",
-        "text": "那是因为柳无邪的父母跟徐义林乃是生死之交，两家早已指腹为婚，约定年满十八即可完婚，大婚之日进入洞房后被徐家大小姐打出。在几名狐朋好友唆使下，第一次踏入青楼，突然狂性大发，引燃火烛，导致整个青楼塌陷。",
-        "storyboard": [
-            {
-                "storyboard_index":"1",
-                "storyboard_text": "15.褪色回忆画面：两位武者（柳父与年轻版徐义林）背靠背迎战妖兽，婴儿襁褓悬浮在防护结界中的奇幻战斗场景",
-                "storyboard_subtitle": "那是因为柳无邪的父母跟徐义林乃是生死之交，两家早已指腹为婚",
-                "prompts": "sepia-toned memory scene: two martial artists fighting demonic beasts back-to-back, infant in glowing protective cradle floating between them, dynamic combat poses, fantasy elements blending with realism",
-                "negative_prompts": "modern setting, peaceful scene, solo character"
-            },
-            {
-                "storyboard_index":"2",
-                "storyboard_text": "16.连续动作分解：新娘（凤冠霞帔）掌掴新郎的瞬间→喜烛倒地→火苗蔓延帷幔→建筑结构崩塌的灾难进展镜头",
-                "storyboard_subtitle": "大婚之日进入洞房后被徐家大小姐打出。在几名狐朋好友唆使下，第一次踏入青楼，突然狂性大发，引燃火烛，导致整个青楼塌陷。",
-                "prompts": "sequential disaster progression: bride slapping groom → overturned candle → fire spreading → building collapse, each frame showing cause-effect relationship, dramatic motion blur effects",
-                "negative_prompts": "static images, separated events, happy scene"
-            },
-            {
-                "storyboard_index":"3",
-                "storyboard_text": "17.仰视灾难镜头：燃烧的梁柱砸落瞬间，青年在火场中仰天狂笑，瞳孔中倒映出仙界神鼎碎片的幻象",
-                "storyboard_subtitle": "",
-                "prompts": "low angle shot of collapsing burning beams, young man laughing madly in inferno, divine cauldron fragments reflected in eyes, intense orange/red color grading, flying ember particles",
-                "negative_prompts": "calm expression, daytime scene, intact building"
-            }
-        ]
-    }
-]
+
+{
+  "段落原文": [
+    "我没死。柳无邪是被疼醒的，身上压着几块碎木头，让他喘不上气来。接着，一团凌乱的记忆钻入他的脑海。他本是凌云仙界十大仙帝之一，机缘巧合是到太荒神器吞天神顶，遭到整个仙界围攻，命丧断魂崖，最后一刻施展血魔解体术，跟他们同归于尽，炸碎了吞天神鼎。醒来的时候已经到了这里。陈武大陆徐家上门女婿败家子。脑海中出现的记忆告诉他，他已经不在凌云仙界，而是重生在一个叫做真武大陆的位面，而这个少年的身体，同样也叫柳无邪。",
+    
+    "出生富贵人家，五岁时家道变故，父母离奇失踪，造成他从小就性格狭隘孤僻，被父亲好友，未来的岳父徐义林收养后也未见好转。随着年龄的增长，性格越来越乖张跋扈，甚至认为对他视如己出的岳父图谋他的家业才收养他。疯狂败家，瞎混成为苍蓝城有名的败家子，整个徐家无一不用废物，蛀虫，垃圾来形容，它依旧我行我素。转眼到了成亲年纪，岳父徐义林认为结了婚之后，性格也许会收敛，而今天就是他的大婚之日，按理来说，他这样的垃圾不可能配得上徐家大小姐。那是因为柳无邪的父母跟徐义林乃是生死之交，两家早已指腹为婚，约定年满十八即可完婚，大婚之日进入洞房后被徐家大小姐打出。在几名狐朋好友唆使下，第一次踏入青楼，突然狂性大发，引燃火烛，导致整个青楼塌陷。悲剧的他被埋在废墟下面。",
+    
+    "罗开压在身上的碎木，平躺在地上，开始检查身体。好狠的手段，一掌命中心脉，如果不是我附身过来，必死无疑。到底是谁想要杀他？不想这样一个群除了一些杂伤之外，最致命来自胸口一道诡异的掌印。他清楚地记得当时跟几个狐朋狗友一起喝酒，失控后的记忆完全记不起来了，短开的心脉只是暂时压制住，需要寻找户卖丹药，重新续接，以他的手段炼制这种丹药不难，还好，这是一座修行者大陆，武道极其成圣，武者有诸多等级，分为后天，先天，洗灵，洗髓真丹。这糟糕的身体，用废物来形容，都抬举他了。筋脉细如发丝，杂质造成的拥堵只能用惨不忍睹来形容。有些麻烦了。",
+    
+    "我所有的修炼法诀，且为仙界神级功法，真武大陆。不过凡界为面，我必须要改修凡界物质的空法才可以。打个比方，就好比一个婴儿，身旁虽然摆放着神兵利器，以婴儿的力气，根本无法拿起这些神兵，想要拿起身兵，必须要成长到一定的程度才可以，至少要达到洗髓境。柳无邪感觉自己尬得要死，尝试好几次，每次都无功而返，筋脉传来的撕裂感让他痛不欲生，再修炼下去，肉身必定四分五裂。这时，一滴精纯的液体从它丹田之中流出，冲向经脉，流入四至百骸。羸弱的经脉犹如贪婪的馋虫，疯狂地吞噬液体，里面的淤泥，一点点溶解，浑身舒态。嗯，什么情况？神师沉入丹田，查看究竟。进入丹田的那一刻，脑袋差点儿炸开，一尊漆黑的神顶盘踞丹田中央位置，液体正是从神顶之中流出。",
+    
+    "这是，这是吞天神顶，他竟然跟我一起过来了。吞天神鼎最后时刻跟他一起炸开，没想到出现在他丹田里面。难道说我能重生？春天神定有密不可分的关系。突然间，一股庞大的黑色气体从顶中冲出，击中柳无邪的意识。黑色气体不断地翻腾变化，最后化为一道道漆黑的文字，古老且沧桑，充满岁月的痕迹。",
+    
+    "强横的冲击力将他的意识从身躯之中震退回到现实当中。来不及整理大脑中的文字，外面传来一阵嘈杂声，他头顶上的碎石一点点被挪开，露出一些光线。许多人手举着火把聚集在四周。爷爷，老爷找到姑爷了。几名壮汉搬开碎木，也该他命不至死。一截横梁恰好拦住了砸下来的巨石，肉身并未遭受太多创伤。真正死亡原因来自那致命一场手忙脚乱，把它抬出来放在地面上，得到神秘液体滋养，身体基本无大碍，直立坐了起来，你这个孽障，你要气死我吗？这时，徐义林出现在他面前，一副恨铁不成钢的样子，气得吹胡子瞪眼。得知女婿大闹青楼，被压在下面，连外衣都没来得及穿，只套着一件披风就赶出来。奇怪的是，面对徐义林的责骂，柳无邪心里流过一丝暖流，他能感觉到徐义林真的担心他这个废物竟然没死啊。这蛀虫还真是命大，这样都没砸死他，老天真是不开眼哪。哎呀，徐家造的什么孽？朝这样的赘婿上门，丢尽了徐家的脸面。哎呀，废物就是废物。今天是他大婚之日，晚上跑来逛青楼，兽性大发，撕开青楼女子衣服，险些酿成大祸。哎呀，苍天不公啊，这样的废物为什么不夺走他的性命啊？四方大量的讥讽声如同潮水一般，劈头盖脸落在柳无邪一人身上，柳无邪一头黑线，却无力反驳。",
+    
+    "徐义林老脸通红，让人赶紧抬着他先回去再说，别在这里丢人现眼了。站住，一老鸨带着十名护卫快步走过来，徐家主令续害的我们怡红院坍塌，几十人受伤，姑娘都吓得不敢出门，我许多宾客还在医馆疗伤呢。这一切都是因他而起，难道打算拍拍屁股就走人吗？老鸨四十多岁，脸上涂着厚厚的胭脂粉，刺鼻的香气有些呛人，一张吊死鬼的脸，看起来让人恶心，站在柳无邪面前大呼小叫，赔偿的事情我会安排人过来商谈。不用了，损失的费用我自己会赔偿。柳公子，不是我贬低你，你拿什么赔偿啊。啊哈哈哈哈，放心，赔偿一分不会少了你我徐林担保，三日之内，赔偿必定送到你手上。徐义林义正言辞做出保证，这才放他们离开，让柳无邪一阵感慨，前身是不是脑袋有问题，看岳父就是真的关心他。跟在徐义林身后，柳无邪一言不发，对徐家他还是很感激的，落魄的时候是徐家拉他一把，徐义林更是遵守承诺，将宝贝女儿许配给自己，这一点可以证明他是重情重义之人。天色渐渐亮了，徐家大门打开，两名小厮正要打扫门外落叶，见到徐义林，纷纷行礼。",
+    
+    "至于柳无邪，将至无事，你回去换套衣服，一会儿到正厅来。见我身上都是灰尘，衣服破碎，跟个叫花子一样。徐义林让他先回去收十一下。是柳无邪对这个岳父心存畏惧，还有一丝尊敬，这些年没有徐家，他不知死了多少次了。"
+  ]
+}

@@ -24,3 +24,49 @@
 1. 小说原文：{{input}}
 
 ## 输出格式：
+[
+    {
+        "index": "1",
+        "text": "[段落原文]",
+        "storyboard": [
+            {
+                "storyboard_index":"1",
+                "storyboard_text": "[画面文本1]",
+                "storyboard_subtitle": "[字幕1]",
+                "prompts": "[prompts1]",
+                "negative_prompts": "[negative prompts1]"
+            },
+            {
+                "storyboard_index":"2",
+                "storyboard_text": "[画面文本1]",
+                "storyboard_subtitle": "[字幕1]",
+                "prompts": "[prompts1]",
+                "negative_prompts": "[negative prompts1]"
+            }
+            ...
+        ]
+    },
+    {
+        "index": "2",
+        "text": "[段落原文]",
+        "storyboard": [
+            {
+                "storyboard_index":"1",
+                "storyboard_text": "[画面文本1]",
+                "storyboard_subtitle": "[字幕1]",
+                "prompts": "[prompts1]",
+                "negative_prompts": "[negative prompts1]"
+            },
+            {
+                "storyboard_index":"2",
+                "storyboard_text": "[画面文本1]",
+                "storyboard_subtitle": "[字幕1]",
+                "prompts": "[prompts1]",
+                "negative_prompts": "[negative prompts1]"
+            }
+            ...
+        ]
+    },
+    ...
+
+]

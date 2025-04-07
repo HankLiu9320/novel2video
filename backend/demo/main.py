@@ -4,25 +4,38 @@ from backend.llm.openai import query_openai
 from backend.util.file import read_file, write_file
 
 # 原文
-story = read_file("story.txt")
-print(f"原文：{story}")
-print("============================================================")
+# story = read_file("story.txt")
+# print(f"原文：{story}")
+# print("============================================================")
 
 # 角色提取
-input = story
-sys1 = read_file("prompt0.txt")
-openai = query_openai(input, sys1, 0.01)
-write_file(openai, "result0.txt")
-print(openai)
-print("============================================================")
+# input = story
+# sys1 = read_file("prompt0.txt")
+# openai = query_openai(input, sys1, 0.01)
+# write_file(openai, "result0.txt")
+# print(openai)
+# print("============================================================")
 
-# 拆分动态镜头
+# 拆分段落
 # input = story
 # sys1 = read_file("prompt1.txt")
 # openai = query_openai(input, sys1, 0.01)
 # write_file(openai, "result1.txt")
 # print(openai)
 # print("============================================================")
+
+# 拆分动态镜头
+sys2 = read_file("prompt2.txt")
+result1 = read_file("result1.txt")
+data = json.loads(result1)
+arr = data["段落原文"]
+
+for item in arr:
+    print("----:", item)
+    # openai = query_openai(input, sys2, 0.01)
+    # write_file(openai, "result1.txt")
+    # print(openai)
+print("============================================================")
 
 # 优化提示词
 # result1 = read_file("result1.txt")

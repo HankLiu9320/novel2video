@@ -3,7 +3,6 @@ import logging
 import os
 import re
 import shutil
-from idlelib.iomenu import encoding
 from typing import List, Tuple
 
 from backend.util.constant import config_path
