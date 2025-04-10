@@ -79,7 +79,7 @@ for globalResItem in globalRes:
     for jingtouItem in jingtouList:
         print(duanluoText)
         print(jingtouItem["镜头文本"])
-        sys3 = sys3.format(duanluoText)
+        sys3 = sys3.replace("{段落原文}", duanluoText)
         openai = query_openai(jingtouItem["镜头文本"], sys3, 0.01)
         res = getJsonData(openai)
         print(res)
