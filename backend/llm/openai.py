@@ -19,7 +19,7 @@ def query_openai(input_text: str, sys: str, temperature: float) -> str:
             model=model,
             messages=messages,
             temperature=temperature,
-            stream=False
+            stream=False,
         )
 
         print(f"response: {response}")
