@@ -105,7 +105,8 @@ def split_static_lens(prompt_file: str, res_file: str):
             for idx, r in enumerate(res):
                 data = {
                     "id": idx,
-                    "画面文本": r
+                    "画面文本": r["画面文本"],
+                    "画面背景": r["画面背景"]
                 }
                 arr.append(data)
 
@@ -119,6 +120,6 @@ def split_static_lens(prompt_file: str, res_file: str):
 if __name__ == '__main__':
     story = read_story()
     # extract_roles(story)
-    split_paragraph(story=story, prompt_file="prompt1.txt", res_file="data.json")
+    # split_paragraph(story=story, prompt_file="prompt1.txt", res_file="data.json")
     # split_dynamic_lens(prompt_file="prompt2.txt", res_file="data.json")
-    # split_static_lens(prompt_file="prompt3.txt", res_file="data.json")
+    split_static_lens(prompt_file="prompt3.txt", res_file="data.json")
