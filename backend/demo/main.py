@@ -85,6 +85,8 @@ def split_dynamic_lens(prompt_file: str, res_file: str):
 # 静态画面拆分 "prompt3.txt"
 def split_static_lens(prompt_file: str, res_file: str):
     sys3 = read_file(prompt_file)
+    keys = read_file("keys.txt")
+
     with open(res_file, 'r', encoding='utf-8') as file:
         globalRes = json.load(file)
 
@@ -95,8 +97,10 @@ def split_static_lens(prompt_file: str, res_file: str):
         for jingtouItem in jingtouList:
             print(r"段落原文:{}", duanluoText)
             print(r"镜头文本:{}", jingtouItem["镜头文本"])
-            sys3 = sys3.replace("{段落原文}", duanluoText)
-            content, reasoning_content = query_openai(jingtouItem["镜头文本"], sys3, 0.01)
+            p3 = sys3.replace("{段落原文}", duanluoText)
+            p3 = p3.replace("{提示词}", keys)
+
+            content, reasoning_content = query_openai(jingtouItem["镜头文本"], p3, 0.01)
             print(r"content:{}", content)
             print(r"reasoning_content:{}", reasoning_content)
             res = get_json_data(content)
@@ -118,7 +122,7 @@ def split_static_lens(prompt_file: str, res_file: str):
 
 
 if __name__ == '__main__':
-    story = read_story()
+    # story = read_story()
     # extract_roles(story)
     # split_paragraph(story=story, prompt_file="prompt1.txt", res_file="data.json")
     # split_dynamic_lens(prompt_file="prompt2.txt", res_file="data.json")
