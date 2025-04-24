@@ -1,5 +1,8 @@
 import json
+import random
+from datetime import datetime
 
+from backend.image.image import generate_images_single
 from backend.llm.openai import query_openai
 from backend.util.file import read_file, write_file
 import re
@@ -122,9 +125,32 @@ def split_static_lens(prompt_file: str, res_file: str):
     print("===========================静态画面拆分=================================")
 
 
+# 生成图片
+def gen_images(res_file: str):
+    with open(res_file, 'r', encoding='utf-8') as file:
+        globalRes = json.load(file)
+
+    for globalResItem in globalRes:
+        duanluoText = globalResItem["段落原文"]
+        jingtouList = globalResItem["镜头列表"]
+
+        for jingtouItem in jingtouList:
+            print(r"镜头文本:{}", jingtouItem["镜头文本"])
+            res = jingtouItem["画面列表"]
+
+            for idx, r in enumerate(res):
+                print(r"    画面文本:{}", r["画面文本"])
+                print(r"    prompts:{}", r["prompts"])
+                name = datetime.now().strftime("%Y%m%d%H%M%S") + ".png"
+                print(r"    name:{}", name)
+                # generate_images_single(r["prompts"], name)
+    print("===========================生成图片=================================")
+
+
 if __name__ == '__main__':
     # story = read_story()
     # extract_roles(story)
     # split_paragraph(story=story, prompt_file="prompt1.txt", res_file="data.json")
     # split_dynamic_lens(prompt_file="prompt2.txt", res_file="data.json")
-    split_static_lens(prompt_file="prompt3.txt", res_file="data.json")
+    # split_static_lens(prompt_file="prompt3.txt", res_file="data.json")
+    gen_images(res_file="data.json")

@@ -8,33 +8,33 @@
                 "画面列表": [
                     {
                         "id": 0,
-                        "画面文本": "豪华宅邸内幼年主角与父母温馨相处的场景",
-                        "画面背景": "雕梁画栋的明代风格客厅，红木家具摆放着青花瓷器，窗外可见庭院假山流水",
-                        "prompts": "1boy, 1girl, 1male, luxurious mansion, ming style architecture, redwood furniture, blue-and-white porcelain, chinese garden view, happy family, traditional chinese clothing"
+                        "画面文本": "幼年主角在豪华府邸中玩耍",
+                        "画面背景": "装饰华丽的传统中式房间，雕花木窗、丝绸帷幔、古董摆件，窗外可见庭院假山与荷花池",
+                        "prompts": "1boy, toddler, traditional_chinese_room, hanfu, silk_clothes, jade_accessories, ornate_furniture, courtyard_view"
                     },
                     {
                         "id": 1,
-                        "画面文本": "五岁时家宅遭遇变故的混乱场景",
-                        "画面背景": "夜晚宅院火光冲天，仆人惊慌奔逃，古董器物散落满地，远处黑影幢幢",
-                        "prompts": "burning mansion, night scene, chaotic crowd, scattered antiques, shadowy figures, fire reflection, traditional chinese courtyard, 1child crying"
+                        "画面文本": "五岁时目睹家仆惊慌奔逃的场景",
+                        "画面背景": "夜幕下的府邸前院，灯笼倾倒燃烧，文书散落满地，远处可见官差举着火把闯入大门",
+                        "prompts": "night_scene, burning_lanterns, chaotic_courtyard, scared_servants, official_uniforms, flying_documents, dynamic_angle"
                     },
                     {
                         "id": 2,
-                        "画面文本": "父母神秘失踪后空荡的宅院场景",
-                        "画面背景": "破晓时分的荒废庭院，落叶堆积的九曲回廊，残留的灯笼在晨风中摇晃",
-                        "prompts": "abandoned courtyard, dawn lighting, fallen leaves, broken lanterns, desolate atmosphere, empty corridor, lone child silhouette"
+                        "画面文本": "蜷缩在废墟角落的孤僻孩童",
+                        "画面背景": "破败的家族祠堂，蛛网密布的牌位倾倒，主角抱膝躲在供桌下，穿透残破屋顶的月光形成光束",
+                        "prompts": "1boy, child, disheveled_hair, torn_clothes, temple_ruins, moonlight_beam, spider_webs, fetal_position"
                     },
                     {
                         "id": 3,
-                        "画面文本": "徐义林收养主角时的场景",
-                        "画面背景": "青石板街道上停着素色轿子，中年文士弯腰向蜷缩墙角的孩童伸手",
-                        "prompts": "middle-aged male, scholar attire, stone-paved street, plain sedan chair, crouching child, cloudy day, hesitant gesture"
+                        "画面文本": "徐义林在雨中撑伞接走主角",
+                        "画面背景": "青石板街道暴雨倾盆，徐义林身着深蓝官服弯腰伸手，主角低头站立在水洼中，身后是贴着封条的朱红大门",
+                        "prompts": "rainy_day, official_hanfu, red_sealed_gate, umbrella_holding, water_reflections, from_above_perspective"
                     },
                     {
                         "id": 4,
-                        "画面文本": "在徐府依旧孤僻的主角",
-                        "画面背景": "书房窗外细雨绵绵，少年独自坐在雕花窗棂旁，面前摊着未动的饭菜",
-                        "prompts": "teenager boy, isolated pose, carved wooden window, rain droplets, untouched meal, inkstone and brush, gloomy expression"
+                        "画面文本": "在徐府书房独处的少年",
+                        "画面背景": "雅致书房内，主角背对镜头蜷缩窗边，案上未动的饭菜，窗外盛开的梨花与室内阴影形成对比",
+                        "prompts": "teenager, back_view, chinese_study_room, untouched_meal, blossom_tree_window, shadow_contrast, solitary_focus"
                     }
                 ]
             },
@@ -44,33 +44,27 @@
                 "画面列表": [
                     {
                         "id": 0,
-                        "画面文本": "年幼的男孩站在华丽的府邸前，身穿精致绸缎衣裳，眼神纯真",
-                        "画面背景": "柳府大门，朱红色门扉敞开，两侧立着石狮，远处可见庭院中的假山和荷花池",
-                        "prompts": "1boy, solo, child, hanfu, silk clothes, mansion, stone lions, courtyard, lotus pond, innocent_eyes, traditional Chinese architecture"
+                        "画面文本": "年幼的男孩站在豪华的府邸庭院中，身着精致锦缎衣裳，周围环绕着雕梁画栋和仆人",
+                        "画面背景": "柳府鼎盛时期的场景，朱红色大门敞开，庭院中央有两棵百年银杏树，汉白玉栏杆上雕刻着祥云纹样，远处可见丫鬟端着漆器茶盘经过",
+                        "prompts": "1boy, traditional_chinese_room, luxurious furniture, silk_clothes, intricate_carving, servant_in_background, courtyard_with_old_trees"
                     },
                     {
                         "id": 1,
-                        "画面文本": "深夜府邸突发大火，雕花窗棂碎裂，父母身影在火光中逐渐模糊",
-                        "画面背景": "燃烧的木质建筑，火星飞舞的夜空，破碎的瓷器散落在地，月光透过烟雾形成诡异光晕",
-                        "prompts": "burning_mansion, night_sky, broken_window, fire_sparks, smoke, mysterious_lighting, disappearing_silhouettes, dramatic_shadows"
+                        "画面文本": "五岁孩童蜷缩在凌乱的书房角落，窗外闪电照亮散落的地契和翻倒的青花瓷瓶",
+                        "画面背景": "暴雨之夜的变故场景，紫檀木书案上账簿散乱，墙上的名家字画歪斜，雨丝透过雕花窗棂渗入室内",
+                        "prompts": "little_boy, chaotic_scene, stormy_night, overturned_vase, scattered_documents, traditional_study_room, lightning_effect"
                     },
                     {
                         "id": 2,
-                        "画面文本": "男孩蜷缩在废墟角落紧抱布偶，眼神空洞望着烧焦的房梁",
-                        "画面背景": "焦黑木梁斜插地面，残破的屏风半掩，晨雾笼罩的废墟中飘着未熄的灰烬",
-                        "prompts": "1boy, solo, little_boy, curled_posture, stuffed_animal, charred_ruins, morning_mist, empty_eyes, tattered_clothes"
+                        "画面文本": "孩童抱着褪色的虎头鞋独坐石阶，身后是贴着封条的朱漆大门，秋风卷起枯黄银杏叶",
+                        "画面背景": "家道中落后的凄凉庭院，石阶缝隙长出野草，门楣上'积善之家'的匾额半垂，满地凌乱脚印和车辙痕迹",
+                        "prompts": "solo, depressed_expression, autumn_leaves, sealed_door, worn_out_clothes, lonely_atmosphere, desolate_courtyard"
                     },
                     {
                         "id": 3,
-                        "画面文本": "中年男子徐义林蹲下身向男孩伸手，背后停着青顶轿子",
-                        "画面背景": "破晓时分的街道，石板路泛着露水，轿夫们垂首待命，远处炊烟升起与废墟形成对比",
-                        "prompts": "middle-aged_male, outstretched_hand, green_sedan_chair, dawn_lighting, cobblestone_road, contrasting_background, adoption_scene"
-                    },
-                    {
-                        "id": 4,
-                        "画面文本": "少年独自坐在徐府阁楼窗边，指尖转动枯萎的花梗",
-                        "画面背景": "雕花木窗半开，窗外梅树摇曳，室内青瓷香炉冷烟，地上投射着孤独的斜影",
-                        "prompts": "teenager, solo, sitting_by_window, withered_flower, intricate_wood_carving, plum_blossom_tree, incense_burner, lonely_shadow"
+                        "画面文本": "徐府书房内，男孩背对养父站在阴影中，手中紧攥生母遗留的玉佩，窗外竹影婆娑",
+                        "画面背景": "收养后的新环境，红木书架陈列典籍，案上宣纸未干，青铜香炉青烟袅袅，菱花格窗外可见摇曳竹林",
+                        "prompts": "back_view, jade_pendant, adoptive_father, study_with_bamboo, shadow_contrast, tense_body_language, heirloom_object"
                     }
                 ]
             },
@@ -80,21 +74,27 @@
                 "画面列表": [
                     {
                         "id": 0,
-                        "画面文本": "阴沉的宅院中，徐义林站在雕花木门前低头看着五岁男孩，男孩攥着褪色的布老虎缩在廊柱阴影里",
-                        "画面背景": "徐府庭院青砖斑驳，两株百年银杏飘落黄叶，回廊朱漆剥落显出萧瑟之气",
-                        "prompts": "1boy, little_boy, black_hair, tearful_eyes, traditional_chinese_clothes, holding_stuffed_tiger, standing_in_shadows, mature_male, formal_hanfu, concerned_expression, courtyard_with_weathered_architecture, ancient_ginkgo_trees, fallen_yellow_leaves"
+                        "画面文本": "五岁的小男孩站在豪华的府邸庭院中，穿着精致的丝绸衣裳，身后是雕梁画栋的宅院",
+                        "画面背景": "柳府鼎盛时期的庭院景象，太湖石假山旁种着两棵百年银杏树，朱红廊柱下摆着青花瓷鱼缸",
+                        "prompts": "1boy, little_boy, luxurious mansion, silk_robes, chinese_architecture, stone_lion_statues, autumn_leafs"
                     },
                     {
                         "id": 1,
-                        "画面文本": "十年后少年独坐藏书楼窗台，徐义林捧着食盒站在楼梯口，两人之间隔着满地凌乱古籍",
-                        "画面背景": "八角形藏书楼布满蛛网，窗外暴雨倾盆，青瓷烛台照亮满地散落的线装书",
-                        "prompts": "teenage_boy, black_hair, slender_face, hanfu_with_loose_sleeves, sitting_on_window_sill, empty_eyes, mature_male, holding_food_container, antique_books_tower, spider_webs, rain_pouring_outside, blue_and_white_porcelain_candlestick"
+                        "画面文本": "深夜暴雨中的破败宅门，小男孩抱着包袱站在积水里，背后是贴着封条的朱漆大门",
+                        "画面背景": "倾盆大雨冲刷着青石板街道，褪色的灯笼在风中摇晃，门楣上'柳宅'牌匾歪斜挂着蜘蛛网",
+                        "prompts": "night_rain, broken_gate, child, soaked_clothes, official_seal_sticker, spider_webs, puddle_reflections"
                     },
                     {
                         "id": 2,
-                        "画面文本": "元宵夜宴少年冷眼看着热闹人群，徐义林之女提着兔子灯欲靠近又止步",
-                        "画面背景": "徐府宴厅张灯结彩，雕花屏风映着烛火，窗外雪落梅枝，案上摆着未动的寿桃",
-                        "prompts": "teenager, cold_expression, crossed_arms, embroidered_hanfu, 1girl, cheongsam, rabbit_lantern, hesitant_posture, banquet_hall_with_red_lanterns, carved_sandalwood_screen, plum_blossoms_in_snow, untouched_peach-shaped_dumplings"
+                        "画面文本": "阴郁少年独坐徐府西厢房的窗边，手指抠着窗棂上的雕花，窗外是飘着枯叶的池塘",
+                        "画面背景": "徐府偏院的简朴房间，褪色的蓝布床帐，桌上放着凉透的饭菜，青砖地面积着灰尘",
+                        "prompts": "teenager, narrow_window, carved_wood, autumn_pond, simple_room, untouched_meal, gloomy_expression"
+                    },
+                    {
+                        "id": 3,
+                        "画面文本": "徐义林皱眉看着低头不语的养子，手中握着戒尺，书房挂着'浩然正气'的匾额",
+                        "画面背景": "徐府书房堆满兵书，黄花梨案几上砚台墨迹未干，麒麟香炉飘着袅袅青烟",
+                        "prompts": "mature_male, adoptive_father, calligraphy_scroll, military_books, incense_burner, disciplinary_ruler"
                     }
                 ]
             }
@@ -109,21 +109,27 @@
                 "画面列表": [
                     {
                         "id": 0,
-                        "画面文本": "一个面容阴鸷的青年男子站在庭院中，双手背在身后，下巴微抬透出倨傲。眼角眉梢带着戾气，黑色长袍被风吹得猎猎作响",
-                        "画面背景": "雕梁画栋的古代宅院，青石板缝隙钻出野草，远处太湖石假山投下锯齿状阴影",
-                        "prompts": "1boy, mature_male, black_hanfu, arrogant_expression, sharp_eyes, evil_smile, standing_with_hands_behind_back, wind_blowing_clothes, chinese_courtyard, stone_paving, overgrown_weeds, taihu_rockery"
+                        "画面文本": "少年时期面带戾气站在庭院中",
+                        "画面背景": "古色古香的宅院回廊，青石板地面落着枯叶，远处可见朱红门扉",
+                        "prompts": "1boy, teenager, angry expression, traditional chinese clothing, courtyard with red pillars, autumn leaves on ground"
                     },
                     {
                         "id": 1,
-                        "画面文本": "特写攥紧的拳头砸在红木案几上，震翻青瓷茶盏。指节泛白的手背青筋暴起，袖口金线刺绣的祥云纹扭曲变形",
-                        "画面背景": "书房内烛火摇曳，身后博古架上摆满古董，墙上挂着'海纳百川'字画却已歪斜",
-                        "prompts": "close-up_of_hand, clenched_fist, wooden_desk, overturned_teacup, blue_porcelain, golden_embroidery, candlelight, antique_shelves, calligraphy_scroll"
+                        "画面文本": "青年时期摔碎茶盏怒视前方",
+                        "画面背景": "昏暗书房内，檀木案几上散落账簿，窗外竹影摇曳",
+                        "prompts": "1boy, mature, furious face, torn hanfu sleeves, dimly lit study room, bamboo shadows outside window"
                     },
                     {
                         "id": 2,
-                        "画面文本": "逆光剪影中男子侧身而立，抬手将族谱撕成两半。破碎的纸页如蝶纷飞，背后窗棂透进的夕照染红半边身子",
-                        "画面背景": "祠堂祖宗牌位森然罗列，香炉青烟袅绕，被撕毁的族谱上有'收养嗣子'的朱砂批注",
-                        "prompts": "silhouette, backlight, tearing_paper, flying_pages, ancestral_hall, spirit_tablets, incense_smoke, red_annotations, setting_sun_glow"
+                        "画面文本": "攥紧地契与白发岳父对峙",
+                        "画面背景": "祠堂香案青烟缭绕，祖宗牌位前的烛火摇曳不定",
+                        "prompts": "1boy clutching paper scroll, elderly male with white beard, ancestral hall with incense burner, flickering candlelight"
+                    },
+                    {
+                        "id": 3,
+                        "画面文本": "深夜持灯笼窥视账房密室",
+                        "画面背景": "月光穿透雕花窗棂，堆积的木箱投射出扭曲阴影",
+                        "prompts": "solo male holding lantern, sneaking posture, secret room full of wooden chests, moonlight through lattice window"
                     }
                 ]
             },
@@ -133,21 +139,33 @@
                 "画面列表": [
                     {
                         "id": 0,
-                        "画面文本": "面容阴鸷的青年男子单手扶额站立，眼中闪烁着偏执与愤怒，面部青筋暴起",
-                        "画面背景": "昏暗的书房环境，窗外透入诡谲的月光，雕花木窗投射的阴影切割着人物轮廓",
-                        "prompts": "1boy, mature_male, evil_eyes, anger_vein, scowling, black_suit, unbuttoned_clothes, dramatic_lighting, moonlit_window, chinese_architecture_interior"
+                        "画面文本": "青年时期的男主角眼神阴鸷地站在中式庭院中，手指紧攥扇骨，身后灯笼光影将他扭曲的影子拉长",
+                        "画面背景": "深宅大院回廊处，朱漆廊柱剥落，石阶缝生杂草，屋檐悬着褪色灯笼，远处戏楼轮廓朦胧",
+                        "prompts": "1boy, mature male, hanfu with dragon embroidery, sinister expression, narrow eyes, clenched jaw, shadow manipulation, traditional Chinese courtyard, peeling red pillars, overgrown stone steps, faded lanterns, dusk lighting"
                     },
                     {
                         "id": 1,
-                        "画面文本": "颤抖的双手紧攥泛黄收养文书，文书特写镜头呈现'遗产继承条款'的朱笔批注",
-                        "画面背景": "红木案几上的青铜烛台摇曳火光，背景虚化的家族祠堂牌位隐约可见",
-                        "prompts": "close-up, trembling_hands, aged_paper, red_ink_annotation, antique_desk, ancestral_tablet_blur, candlelight_flicker"
+                        "画面文本": "中年岳父在书房执笔书写，账册堆叠如山，窗外竹影婆娑映在泛黄的家规卷轴上",
+                        "画面背景": "木质雕花书房，紫檀案几摆着青瓷笔洗，博古架陈列宗祠牌位，雨打湘妃竹窗棂",
+                        "prompts": "middle-aged male, scholar robes, ink brush writing, stacks of account books, traditional Chinese study room, rosewood desk, celadon brush washer, ancestral tablets shelf, bamboo shadows on parchment"
                     },
                     {
                         "id": 2,
-                        "画面文本": "逆光剪影中老者慈祥递茶，青年背身而立抬手打翻茶盏，飞溅的水珠凝结在半空",
-                        "画面背景": "黄昏时分的四合院天井，银杏落叶悬浮在橙红暮光中，青石板地面积水映出扭曲倒影",
-                        "prompts": "silhouette, mature_male, ojousama, spilled_teacup, frozen_splashes, courtyard_ginkgo, golden_hour_lighting, ripple_reflections"
+                        "画面文本": "男主角癫狂撕碎地契，碎纸如蝶纷飞中露出腰间暗藏匕首，烛火将瞳孔映成血红色",
+                        "画面背景": "祠堂香案倾倒，祖宗画像被割裂，青铜香炉滚落台阶，香灰与纸钱混作满地狼藉",
+                        "prompts": "1boy, madness, torn land deeds, flying paper fragments, dagger hidden in waistband, bloodshot eyes, ancestral hall interior, overturned incense altar, torn ancestral portraits, bronze censer"
+                    },
+                    {
+                        "id": 3,
+                        "画面文本": "岳父颤抖手掌悬在半空，掌心躺着当年收养契约，泪滴晕开墨迹中的'亲子'字样",
+                        "画面背景": "暴雨夜的纸窗棂，雷电刹那照亮墙上的合欢花刺绣，茶盏碎瓷陷进织锦地毯",
+                        "prompts": "old man's trembling hands, adoption contract document, teardrops on ink characters, thunderstorm lighting, paper lattice window, shattered porcelain on brocade rug, silk embroidery wall hanging"
+                    },
+                    {
+                        "id": 4,
+                        "画面文本": "男主角立于家族牌位前冷笑，手中火折子点燃族谱，火舌吞噬'继承'印章的朱砂痕迹",
+                        "画面背景": "漆黑祠堂仅存跳动的火光，牌位在金红交织的光影中倾倒，烟雾形成扭曲人脸",
+                        "prompts": "1boy, sneering, igniting family genealogy book, ancestral tablets hall, dancing firelight, crimson inheritance seal burning, smoke forming ghostly faces, dramatic shadows"
                     }
                 ]
             }
@@ -162,27 +180,21 @@
                 "画面列表": [
                     {
                         "id": 0,
-                        "画面文本": "徐家少爷在赌场挥金如土，脚下堆满金银珠宝，周围赌徒用鄙夷眼神围观",
-                        "画面背景": "苍蓝城最奢华的赌场'金玉楼'，雕梁画栋间烟雾缭绕，窗外可见城中标志性的蓝色琉璃瓦屋顶",
-                        "prompts": "1boy (extravagant_expression), (wasted_money), (gambling_house), (crowded_scene), (contemptuous_looks), (blue_roof_tiles), (smoky_atmosphere), (ancient_chinese_architecture)"
+                        "画面文本": "徐家族人聚集在厅堂内，三人指着画面外的方向，脸上带着愤怒与失望的表情",
+                        "画面背景": "古色古香的家族议事厅，雕花木椅上坐着三个身着锦袍的中年男性，背后悬挂'徐府'匾额，窗外可见苍蓝城飞檐建筑",
+                        "prompts": "3boys, angry_face, disappointed, traditional_chinese_room, chinese_style_architecture, silk_robes, calligraphy_scrolls"
                     },
                     {
                         "id": 1,
-                        "画面文本": "醉醺醺的徐家子横卧青楼台阶，衣衫不整手握酒壶，歌女们掩嘴窃笑",
-                        "画面背景": "'春宵阁'朱红大门前，灯笼映照着他苍白的脸，石板路上散落着撕碎的银票",
-                        "prompts": "1boy (drunken_pose), (disheveled_clothes), (brothel_steps), (red_lanterns), (torn_banknotes), (laughing_geishas), (stone_pavement), (night_scene)"
+                        "画面文本": "衣衫不整的青年在赌场门口抛洒金币，围观群众指指点点",
+                        "画面背景": "苍蓝城繁华街道，赌场招牌悬挂鎏金'宝'字，青石板路上散落骰子和酒壶，围观者包含商贩/武者/普通市民等多阶层人物",
+                        "prompts": "1boy, disheveled_hair, throwing_coins, crowd, gambling_house, stone_pavement, merchant, warrior, pointing_gesture"
                     },
                     {
                         "id": 2,
-                        "画面文本": "徐家长老会议厅内，族老们愤怒摔碎茶盏，墙上'徐氏家训'牌匾摇摇欲坠",
-                        "画面背景": "传统中式厅堂，紫檀木家具倒映着窗外竹林，地上散落着'败家子'字样的文书",
-                        "prompts": "multiple_boys (angry_elders), (chinese_ancestral_hall), (shattered_porcelain), (calligraphy_scrolls), (bamboo_garden), (wooden_tablet), (family_crest)"
-                    },
-                    {
-                        "id": 3,
-                        "画面文本": "徐家子骑马踏过菜市，掀翻货摊浑然不觉，百姓们指着他腰间的传家玉佩议论",
-                        "画面背景": "苍蓝城中央市集，背景可见城墙上的苍鹰浮雕，空中飘落被践踏的蔬菜叶",
-                        "prompts": "1boy (riding_horse), (market_chaos), (heirloom_jade), (pointing_crowd), (city_wall_relief), (flying_vegetables), (traditional_market)"
+                        "画面文本": "青年斜倚城墙独饮，脚下堆满空酒坛，月光照亮嘴角嘲讽的笑意",
+                        "画面背景": "夜色中的苍蓝城城墙，斑驳青砖上爬满藤蔓，远处可见灯火通明的花街，破碎酒坛形成剪影轮廓",
+                        "prompts": "solo, male, leaning_on_wall, wine_jug, moonlight, ivy_on_wall, distant_lanterns, smirking"
                     }
                 ]
             },
