@@ -1,11 +1,10 @@
+import asyncio
 import json
-import random
-from datetime import datetime
-
-from backend.image.image import generate_images_single
-from backend.llm.openai import query_openai
-from backend.util.file import read_file, write_file
 import re
+
+from backend.llm.openai import query_openai
+from backend.rest_handler.image import async_generate_image_single
+from backend.util.file import read_file, write_file
 
 
 def get_json_data(content: str):
@@ -130,20 +129,22 @@ def gen_images(res_file: str):
     with open(res_file, 'r', encoding='utf-8') as file:
         globalRes = json.load(file)
 
-    for globalResItem in globalRes:
+    for gidx, globalResItem in enumerate(globalRes):
         duanluoText = globalResItem["段落原文"]
         jingtouList = globalResItem["镜头列表"]
 
-        for jingtouItem in jingtouList:
+        for jidx, jingtouItem in enumerate(jingtouList):
             print(r"镜头文本:{}", jingtouItem["镜头文本"])
             res = jingtouItem["画面列表"]
 
             for idx, r in enumerate(res):
-                print(r"    画面文本:{}", r["画面文本"])
-                print(r"    prompts:{}", r["prompts"])
-                name = datetime.now().strftime("%Y%m%d%H%M%S") + ".png"
-                print(r"    name:{}", name)
-                # generate_images_single(r["prompts"], name)
+                if "prompts" in r:
+                    print(r"    画面文本:{}", r["画面文本"])
+                    print(r"    prompts:{}", r["prompts"])
+                    name = f'{gidx}-{jidx}-{idx}.png'
+                    asyncio.run(async_generate_image_single(r["prompts"], name, "imgs"))
+                    print(r"    name:{}", name)
+
     print("===========================生成图片=================================")
 
 
