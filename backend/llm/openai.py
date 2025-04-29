@@ -13,6 +13,7 @@ def query_openai(input_text: str, sys: str, temperature: float) -> str:
         if sys:
             messages.append({"role": "system", "content": sys})
         messages.append({"role": "user", "content": input_text})
+        print(f"messages :{messages}")
 
         # deepseek-chat
         response = client.chat.completions.create(
