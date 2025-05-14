@@ -112,8 +112,8 @@ def split_static_lens(prompt_file: str, res_file: str):
                 data = {
                     "id": idx,
                     "画面文本": r["画面文本"],
-                    "画面背景": r["画面背景"],
-                    "prompts": r["prompts"]
+                    # "画面背景": r["画面背景"],
+                    # "prompts": r["prompts"]
                 }
                 arr.append(data)
 
