@@ -20,4 +20,4 @@ def extract_audio(video_path, audio_path="output_audio.mp3"):
         print(f"错误：{str(e)}")
 
 # 使用示例
-extract_audio("shipin.mp4", "extracted_audio.mp3")
+extract_audio("data/video_orginal/shipin.mp4", "extracted_audio.mp3")
