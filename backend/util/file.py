@@ -139,6 +139,14 @@ def write_file(content, file_path):
         return e
     return None
 
+def append_file(content, file_path):
+    try:
+        with open(file_path, 'a', encoding='utf-8') as file:
+            file.write(content + "\n")
+    except Exception as e:
+        return e
+    return None
+
 def remove_all(directory):
     if os.path.exists(directory):
         shutil.rmtree(directory, ignore_errors=True)
